@@ -31,7 +31,7 @@ const Expandable: Component<ExpandableProps> = (props) => {
   return (
     <div class='flex flex-col relative'>
       <div
-        style={`height: ${expanded() ? contentHeight() : '0'}px;`}
+        style={`height: ${expanded() ? contentHeight() : '0'}px`}
         class='overflow-hidden transition-[height] ease-in-out duration-300'
       >
         <div ref={contentDiv!}>
