@@ -11,8 +11,9 @@ const Expandable: Component<ExpandableProps> = (props) => {
   let contentDiv: HTMLDivElement;
     
   const updateContentHeight = () => {
-    // We need to set border, otherwise getBoundingClientRect().height doesn't include margins
-    // Side effect: height is calculated with the border and content gets squished by borders width
+    // Setting border, otherwise getBoundingClientRect().height doesn't include margins
+    // Side effect: height is calculated with the border and content gets
+    // squished by border's width
     contentDiv.style.border = 'solid 1px transparent';
     setContentHeight(contentDiv.getBoundingClientRect().height);
     contentDiv.style.border = '';
