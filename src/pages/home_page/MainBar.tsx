@@ -9,10 +9,8 @@ import WobblyDiv from '../../shared_components/WobblyDiv';
 const ContactIcons: Component = () => {
   return (
     <nav class='
-      absolute right-0 top-0 m-3
-      sm:static
-      flex flex-col sm:flex-row sm:gap-5
-      sm:self-center'
+      static sm:gap-5 self-center
+      flex flex-col sm:flex-row'
     >
       <a class='group h-10 inline' href='https://github.com/eduardonn' target='_blank'>
         <img src={githubIcon} class='w-6 sm:w-10 group-hover:custom-animate-bounce' alt='github'/>
@@ -38,24 +36,18 @@ const ContactIcons: Component = () => {
 const MainBar: Component = () => {
   return (
     <WobblyDiv
-      width={window.innerWidth}
-      resolution={20}
+      resolution={15}
       wavesForceMax={6}
       background={
         <radialGradient id='radialGradient' cx='50%' cy='90%' r='90%' fx='50%' fy='90%'>
           <stop style='stop-color:var(--main-bar-bg-gradient-clr-1)' offset='40%' />
           <stop style='stop-color:var(--main-bar-bg-gradient-clr-2)' offset='100%' />
         </radialGradient>
-        // <linearGradient id='linear1' x1='0%' y1='0%' x2='0%' y2='100%'>
-        //   <stop style='stop-color:gold' offset='0%' />
-        //   <stop style='stop-color:darkorange' offset='100%' />
-        // </linearGradient>
       }
       svgFill='url(#radialGradient)'
     >
       <div class='
-        flex flex-col relative gap-5 p-5 px-[4vw]
-        sm:flex-row sm:justify-between'
+        flex justify-between relative gap-5 p-5 px-[4vw]'
       >
         <div class='flex flex-col gap-1'>
           <span class='text-gray-600'>Hello! My name is</span>
@@ -70,8 +62,11 @@ const MainBar: Component = () => {
         </div>
         <ContactIcons />
         <button
-          class='absolute right-2 bottom-3 text-xs text-gray-600'
-          onClick={replayAnimations}>Replay Animations</button>
+          aria-label='replay animations button'
+          class='absolute hidden sm:block bottom-1 right-2
+            sm:bottom-3 sm:text-xs text-gray-600'
+          onClick={replayAnimations}
+        >Replay Animations</button>
       </div>
     </WobblyDiv>
   )
