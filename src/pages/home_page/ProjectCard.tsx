@@ -83,7 +83,7 @@ const ProjectCard: Component<ProjectCardProps> = ({ title, description, link, pr
         --preview-width:calc(var(--preview-height)*16/9)'
       class={`flex flex-col relative shadow-xl
       h-64 transition-colors ml-0 mb-[calc(var(--preview-height)/2)]
-      sm:w-[38rem] md:mb-0
+       md:mb-0
       ${(previewPos === 'left')
         ? 'md:ml-[calc(var(--preview-width)/2)] md:mr-auto'
         : 'md:mr-[calc(var(--preview-width)/2)] md:ml-auto'
