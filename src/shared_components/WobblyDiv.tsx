@@ -24,7 +24,7 @@ class WobblyPointsEngine {
   svgElement?: SVGPathElement;
   contentElement?: HTMLElement;
 
-  constructor(width: number, height: number = 100, numPoints: number, settings?: PhysicsSettings) {
+  constructor(numPoints: number, settings?: PhysicsSettings) {
     this.radius = 2;
     if (numPoints > 2) {
       this.#numPoints = 
@@ -60,7 +60,7 @@ class WobblyPointsEngine {
     const pointDistanceFromTarget = 
       Math.abs(point.y - targetHeight);
 
-    // Factor for decreasing springForce as the distance from target position descreases
+    // Factor for decreasing springForce as the distance from target position decreases
     const forceFactor = 
       Math.min(pointDistanceFromTarget, this.physicsSettings.viscosity)
       / this.physicsSettings.viscosity;
@@ -122,7 +122,6 @@ class WobblyPointsEngine {
 }
 
 interface WobblyDivProps {
-  width: number;
   resolution: number;
   svgFill: string;
   wavesForceMax?: number;
@@ -131,10 +130,10 @@ interface WobblyDivProps {
 }
 
 const WobblyDiv: Component<WobblyDivProps> = 
-    ({ width, resolution = 20, wavesForceMax = 10, svgFill, background, children}) => {
+    ({resolution = 20, wavesForceMax = 10, svgFill, background, children}) => {
   let contentElement: HTMLDivElement;
   
-  const pointsEngine = new WobblyPointsEngine(width, 200, resolution);
+  const pointsEngine = new WobblyPointsEngine(resolution);
 
   const calculateWaveForce = (mouseY: number, previousMouseY: number) => {
     let force = mouseY - previousMouseY;
@@ -166,15 +165,13 @@ const WobblyDiv: Component<WobblyDivProps> =
   }
 
   onMount(() => {
-    const handleWindowResize = () => pointsEngine.handleWindowResize();
-
     document.addEventListener('mousemove', handleMouseMovement);
-    window.addEventListener('resize', handleWindowResize);
+    window.addEventListener('resize', pointsEngine.handleWindowResize.bind(pointsEngine));
 
     onCleanup(() => {
       pointsEngine.stopAnimation(); 
       document.removeEventListener('mousemove', handleMouseMovement);
-      window.removeEventListener('resize', handleWindowResize);
+      window.removeEventListener('resize', pointsEngine.handleWindowResize.bind(pointsEngine));
     });
   });
 
@@ -189,12 +186,9 @@ const WobblyDiv: Component<WobblyDivProps> =
       onClick={(e) => 
         pointsEngine.addForceWave(e.clientX / window.innerWidth, wavesForceMax)}
     >
-      <svg
-        class='absolute w-full overflow-visible'
-        width={width}
-      >
+      <svg class='absolute w-full overflow-visible'>
         {background}
-        <path class='shadow-lg' ref={pointsEngine.svgElement} fill={svgFill} />
+        <path ref={pointsEngine.svgElement} fill={svgFill} />
       </svg>
       {children}
     </div>

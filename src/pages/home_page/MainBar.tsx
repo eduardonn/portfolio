@@ -50,7 +50,7 @@ const MainBar: Component = () => {
         flex justify-between relative gap-5 p-5 px-[4vw]'
       >
         <div class='flex flex-col gap-1'>
-          <span class='text-gray-600'>Hello! My name is</span>
+          <span class='text-gray-700'>Hello! My name is</span>
           <div class='
             text-black text-[2rem] sm:text-[2.6rem] font-cinzel relative mb-2
             before:absolute before:bottom-0
