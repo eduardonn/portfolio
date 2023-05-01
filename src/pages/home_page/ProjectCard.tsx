@@ -49,7 +49,7 @@ const TitleSection: Component<Pick<ProjectCardProps, 'previewPos' | 'link' | 'ti
   { previewPos, link, title }
 ) => {
   return (
-    <div class='h-[33%] bg-deepOrange'>
+    <div class='h-20 bg-deepOrange'>
       <Spacer previewPos={previewPos} />
       <div class='flex justify-center items-center h-full'>
         <a href={link} class={`text-lg font-semibold text-white`}>
@@ -65,15 +65,17 @@ const DescriptionSection:
   { previewPos, description, link, techStack }
 ) => {
   return (
-    <div class={`h-full md:pb-0 bg-deepYellow`}>
+    <div class={`h-full bg-deepYellow`}>
       <Spacer previewPos={previewPos} />
-      <div class='p-4 flex flex-col gap-3 h-full'>
-        <p class=''>{description}</p>
-        <a href={link} class='text-gray-600 w-fit'>See project &gt&gt</a>
-        <div class='flex items-center mt-auto gap-5'>
-          <For each={techStack}>{(techName) =>
-            <TechIcon iconName={techName} />
-          }</For>
+      <div class='mb-[calc(var(--preview-height)/2)] md:mb-0 h-full'>
+        <div class='p-4 flex flex-col gap-3 h-full grow'>
+          <p>{description}</p>
+          <a href={link} class='text-gray-600 w-fit'>See project &gt&gt</a>
+          <div class='flex mt-auto gap-5'>
+            <For each={techStack}>{(techName) =>
+              <TechIcon iconName={techName} />
+            }</For>
+          </div>
         </div>
       </div>
     </div>);
@@ -86,7 +88,7 @@ const ProjectCard: Component<ProjectCardProps> = ({ title, description, link, pr
         --preview-height:min(12rem,42vw);
         --preview-width:calc(var(--preview-height)*16/9)'
       class={`flex flex-col relative shadow-xl
-      h-64 ml-0 mb-[calc(var(--preview-height)/2)]
+      min-h-[16rem] md:h-64 ml-0 mb-[calc(var(--preview-height)/2)]
       md:mb-0
       ${(previewPos === 'left')
         ? 'md:ml-[calc(var(--preview-width)/2)] md:mr-16'
