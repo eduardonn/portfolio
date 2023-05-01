@@ -9,7 +9,7 @@ const PersonalProjectsSection: Component = () => {
     <HomePageSection>
       <div class='pb-16'>
         <h1 class='text-3xl mb-6'>Personal Projects</h1>
-        <div class='flex flex-col gap-8 items-center'>
+        <div class='flex flex-col gap-8'>
           <For each={projectsList}>{(project, index) => 
             <ProjectCard
               title={project.title}

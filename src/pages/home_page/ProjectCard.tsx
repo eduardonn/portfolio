@@ -12,7 +12,7 @@ const ProjectPreview = ({ link, previewPos } : Pick<ProjectCardProps, 'link' | '
   return (
     <a 
       href={link}
-      class={`absolute aspect-video h-[var(--preview-height)] p-0
+      class={`absolute aspect-video h-[var(--preview-height)]
         bg-gray-200 hover:scale-[1.4] transition-transform duration-500
         border-purple-900 border-2
         bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
@@ -35,21 +35,27 @@ const ProjectPreview = ({ link, previewPos } : Pick<ProjectCardProps, 'link' | '
   );
 }
 
+const Spacer: Component<Pick<ProjectCardProps, 'previewPos'>> = ({ previewPos }) => {
+  return (
+    <div
+      class={`h-full md:min-w-[calc(var(--preview-width)/2)]${(previewPos === 'right')
+        ? ' float-right'
+        : ' float-left'}`}
+    />
+  );
+}
+
 const TitleSection: Component<Pick<ProjectCardProps, 'previewPos' | 'link' | 'title'>> = (
   { previewPos, link, title }
 ) => {
   return (
-    <div 
-      class={`
-        flex h-[33%] items-center bg-deepOrange
-        md:justify-start ${(previewPos === 'right') && 'flex-row-reverse'}
-    `}>
-      <div id='spacer' class='md:min-w-[calc(var(--preview-width)/2)]' />
-      <a href={link} 
-        class={`text-lg font-semibold text-white m-4 mx-auto`}
-      >
-        {title}
-      </a>
+    <div class='h-[33%] bg-deepOrange'>
+      <Spacer previewPos={previewPos} />
+      <div class='flex justify-center items-center h-full'>
+        <a href={link} class={`text-lg font-semibold text-white`}>
+          {title}
+        </a>
+      </div>
     </div>
   )
 }
@@ -59,11 +65,9 @@ const DescriptionSection:
   { previewPos, description, link, techStack }
 ) => {
   return (
-    <div class={`flex h-full md:pb-0 bg-deepYellow
-      ${(previewPos === 'right') && 'flex-row-reverse'}
-    `}>
-      <div id='spacer' class='md:min-w-[calc(var(--preview-width)/2)]' />
-      <div class='p-4 flex flex-col gap-3'>
+    <div class={`h-full md:pb-0 bg-deepYellow`}>
+      <Spacer previewPos={previewPos} />
+      <div class='p-4 flex flex-col gap-3 h-full'>
         <p class=''>{description}</p>
         <a href={link} class='text-gray-600 w-fit'>See project &gt&gt</a>
         <div class='flex items-center mt-auto gap-5'>
@@ -82,11 +86,11 @@ const ProjectCard: Component<ProjectCardProps> = ({ title, description, link, pr
         --preview-height:min(12rem,42vw);
         --preview-width:calc(var(--preview-height)*16/9)'
       class={`flex flex-col relative shadow-xl
-      h-64 transition-colors ml-0 mb-[calc(var(--preview-height)/2)]
-       md:mb-0
+      h-64 ml-0 mb-[calc(var(--preview-height)/2)]
+      md:mb-0
       ${(previewPos === 'left')
-        ? 'md:ml-[calc(var(--preview-width)/2)] md:mr-auto'
-        : 'md:mr-[calc(var(--preview-width)/2)] md:ml-auto'
+        ? 'md:ml-[calc(var(--preview-width)/2)] md:mr-16'
+        : 'md:mr-[calc(var(--preview-width)/2)] md:ml-16'
       }
     `}>
       <ProjectPreview 
