@@ -12,7 +12,7 @@ const projectsList: Array<ProjectInfo> = [
     title: 'Memorization App',
     description: "An application for creating notes and helping you review them",
     link: '/projects/memorization-app',
-    techStack: ["React.js", "Typescript", "MaterialUI", "PostgreSQL"],
+    techStack: ["Next.js", "Typescript", "MaterialUI", "PostgreSQL"],
   },
   {
     title: '3D Sorting Algorithms Visualizer',

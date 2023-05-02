@@ -4,6 +4,7 @@ import reactIcon from '../../assets/react.svg';
 import postgresqlIcon from '../../assets/postgresql.svg';
 import typescriptIcon from '/src/assets/typescript.svg'
 import tailwindIcon from '/src/assets/tailwind.svg'
+import nextIcon from '/src/assets/next.svg'
 
 const iconsInfo = {
   'MaterialUI': {
@@ -21,6 +22,10 @@ const iconsInfo = {
   'React.js': {
     href: 'https://react.dev/',
     imgSrc: reactIcon,
+  },
+  'Next.js': {
+    href: 'https://nextjs.org/',
+    imgSrc: nextIcon,
   },
   'Three.js': {
     href: 'https://threejs.org/',
@@ -67,7 +72,7 @@ export default function TechIcon({ iconName }: { iconName: AvailableIcons }) {
     <a class='group' href={iconsInfo[iconName].href} target='_blank'>
       <img
         src={iconsInfo[iconName].imgSrc}
-        class='max-h-[1.8rem] min-h-[1.8rem]'
+        class='h-[1.8rem] max-w-[5rem]'
         title={iconName}
         alt={iconName}/>
     </a>
