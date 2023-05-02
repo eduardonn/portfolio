@@ -6,12 +6,16 @@
   :root {
     --selection-clr: white;
     --selection-bg-clr: sandybrown;
+    --scroll-bar-track-clr: rgb(17, 17, 17);
+    --scrollbar-thumb-bgcolor: rgb(253, 140, 1);
     --home-page-bg-gradient-1: rgb(255 164 240);
     --home-page-bg-gradient-2: rgb(255 236 102);
     --main-bar-bg-gradient-clr-1: rgb(255, 220, 24);
     --main-bar-bg-gradient-clr-2: rgb(253, 140, 1);
-    --scroll-bar-track-clr: rgb(17, 17, 17);
-    --scrollbar-thumb-bgcolor: rgb(253, 140, 1);
+    --projects-page-bg-grad-1: rgb(255, 220, 24);
+    --projects-page-bg-grad-2: rgb(253, 140, 1);
+    --project-card-description-bg: rgb(255 195 121);
+    --project-card-title-bg: rgb(255 126 20);
   }
 
   body {

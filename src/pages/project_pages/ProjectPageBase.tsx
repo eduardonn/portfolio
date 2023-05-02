@@ -28,10 +28,11 @@ export const ProjectContentSection = ({ children }: { children: JSX.Element }) =
 
 const ProjectPageBase = ({ projectIndex, children } : ProjectPageBaseProps) => {
   return (
-    <div class='
-      bg-[linear-gradient(theme(colors.purpleSky),theme(colors.sunset),theme(colors.sand))]
-      h-full
-    '>
+    <div 
+      style='background-image: linear-gradient(
+        var(--home-page-bg-gradient-2), var(--home-page-bg-gradient-1));'
+      class='h-full'
+    >
       <ProjectsListBar projectIndex={projectIndex} />
       <NextPreviousPageBar
         previous={projectsList[projectIndex - 1] && {

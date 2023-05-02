@@ -49,7 +49,7 @@ const TitleSection: Component<Pick<ProjectCardProps, 'previewPos' | 'link' | 'ti
   { previewPos, link, title }
 ) => {
   return (
-    <div class='h-20 bg-deepOrange'>
+    <div class='h-20 bg-[var(--project-card-title-bg)]'>
       <Spacer previewPos={previewPos} />
       <div class='flex justify-center items-center h-full'>
         <a href={link} class={`text-lg font-semibold text-white`}>
@@ -65,7 +65,7 @@ const DescriptionSection:
   { previewPos, description, link, techStack }
 ) => {
   return (
-    <div class={`h-full bg-deepYellow`}>
+    <div class={`h-full bg-[var(--project-card-description-bg)]`}>
       <Spacer previewPos={previewPos} />
       <div class='mb-[calc(var(--preview-height)/2)] md:mb-0 h-full'>
         <div class='p-4 flex flex-col gap-3 h-full grow'>
