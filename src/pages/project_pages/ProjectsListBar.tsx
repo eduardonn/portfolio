@@ -10,7 +10,6 @@ const ProjectsListBar = ({ projectIndex }: { projectIndex: number }) => {
   let firstTouchPos = 0;
 
   onMount(() => {
-    console.log('x:', selectedLinkElement.getBoundingClientRect().x)
     const initialScrollValue = 
       - selectedLinkElement.getBoundingClientRect().x
       + window.innerWidth / 2
