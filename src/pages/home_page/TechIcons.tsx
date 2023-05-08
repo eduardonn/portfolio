@@ -69,7 +69,7 @@ export type AvailableIcons = keyof typeof iconsInfo;
 
 export default function TechIcon({ iconName }: { iconName: AvailableIcons }) {
   return (
-    <a class='group' href={iconsInfo[iconName].href} target='_blank'>
+    <a href={iconsInfo[iconName].href} target='_blank'>
       <img
         src={iconsInfo[iconName].imgSrc}
         class='h-[1.8rem] max-w-[5rem]'
