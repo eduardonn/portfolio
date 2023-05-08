@@ -16,6 +16,8 @@
     --projects-page-bg-grad-2: rgb(253, 140, 1);
     --project-card-description-bg: rgb(255 195 121);
     --project-card-title-bg: rgb(255 126 20);
+    --projects-list-bar-bg-grad-1: rgb(255, 230, 10);
+    --projects-list-bar-bg-grad-2: rgb(255 150 20);
   }
 
   body {
@@ -54,10 +56,6 @@
     animation: bounce 1s infinite;
   }
 
-  .background-glow {
-    background-image: radial-gradient(circle at 50% 80%, rgb(219, 121, 219), transparent);
-  }
-
   @keyframes bounce {
     50% {
       transform: translateY(-25%);
@@ -70,21 +68,10 @@
   }
 
   @keyframes fall-bounce {
-    0% {
-      transform: translateY(-10rem);
-    }
-
-    60% {
-      transform: translateY(-2rem);
-    }
-    
-    90% {
-      transform: translateY(-.25rem);
-    }
-
-    40%, 85%, 100% {
-      transform: translateY(0);
-    }
+    0% { transform: translateY(-10rem); }
+    60% { transform: translateY(-2rem); }
+    90% { transform: translateY(-.25rem); }
+    40%, 85%, 100% { transform: translateY(0); }
   }
 
   .animate-fall-bounce {

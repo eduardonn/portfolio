@@ -52,9 +52,9 @@ const ProjectsListBar = ({ projectIndex }: { projectIndex: number }) => {
       <div
         ref={contentDiv!}
         style={`transform: translateX(${scroll()}px);`}
-        class='flex relative gap-6 justify-center text-white
+        class='flex relative gap-6 justify-center
           w-full min-w-max transition-transform
-          before:absolute before:w-[120%] before:h-full before:bg-orange-300'
+          before:absolute before:w-[120%] before:h-full'
       >
         <For each={projectsList}>{(item, index) => (
           <a

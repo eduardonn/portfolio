@@ -28,22 +28,21 @@ export const ProjectContentSection = ({ children }: { children: JSX.Element }) =
 
 const ProjectPageBase = ({ projectIndex, children } : ProjectPageBaseProps) => {
   return (
-    <div 
-      style='background-image: linear-gradient(
-        var(--home-page-bg-gradient-2), var(--home-page-bg-gradient-1));'
-      class='h-full'
-    >
-      <ProjectsListBar projectIndex={projectIndex} />
-      <NextPreviousPageBar
-        previous={projectsList[projectIndex - 1] && {
-          link: projectsList[projectIndex - 1]?.link,
-          title: projectsList[projectIndex - 1]?.title
-        }}
-        next={projectsList[projectIndex + 1] && {
-          link: projectsList[projectIndex + 1]?.link,
-          title: projectsList[projectIndex + 1]?.title
-        }}
-      />
+    <div>
+      <div style='background-image: radial-gradient(circle at 50% 1000%,
+          var(--projects-list-bar-bg-grad-1), var(--projects-list-bar-bg-grad-2)'>
+        <ProjectsListBar projectIndex={projectIndex} />
+        <NextPreviousPageBar
+          previous={projectsList[projectIndex - 1] && {
+            link: projectsList[projectIndex - 1]?.link,
+            title: projectsList[projectIndex - 1]?.title
+          }}
+          next={projectsList[projectIndex + 1] && {
+            link: projectsList[projectIndex + 1]?.link,
+            title: projectsList[projectIndex + 1]?.title
+          }}
+        />
+      </div>
       <div class='px-[5vw] sm:px-[15vw]'>
         {children}
       </div>
