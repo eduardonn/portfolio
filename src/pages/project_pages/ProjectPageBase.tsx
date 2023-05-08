@@ -2,6 +2,7 @@ import { JSX } from "solid-js";
 import ProjectsListBar from "./ProjectsListBar";
 import NextPreviousPageBar from "./NextPreviousPageBar";
 import projectsList from "../../globals/projectsList";
+import BackgroundElement from "../../shared_components/BackgroundElement";
 
 interface ProjectPageBaseProps {
   projectIndex: number
@@ -29,8 +30,9 @@ export const ProjectContentSection = ({ children }: { children: JSX.Element }) =
 const ProjectPageBase = ({ projectIndex, children } : ProjectPageBaseProps) => {
   return (
     <div>
-      <div style='background-image: radial-gradient(circle at 50% 1000%,
-          var(--projects-list-bar-bg-grad-1), var(--projects-list-bar-bg-grad-2)'>
+      <BackgroundElement />
+      <div style='background-image: radial-gradient(circle at 50% 200%,
+          var(--projects-list-bar-bg-grad-1), var(--projects-list-bar-bg-grad-2) 70%'>
         <ProjectsListBar projectIndex={projectIndex} />
         <NextPreviousPageBar
           previous={projectsList[projectIndex - 1] && {

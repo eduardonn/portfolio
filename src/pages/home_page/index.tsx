@@ -2,7 +2,7 @@ import { Component } from "solid-js";
 import AboutMeSection from "./AboutMeSection";
 import MainBar from "./MainBar";
 import PersonalProjectsSection from "./PersonalProjectsSection";
-import BackgroundElement from "./BackgroundElement";
+import BackgroundElement from "../../shared_components/BackgroundElement";
 
 const Home: Component = () => {
   return (<>
