@@ -2,7 +2,7 @@ import { JSX } from "solid-js";
 import ProjectsListBar from "./ProjectsListBar";
 import NextPreviousPageBar from "./NextPreviousPageBar";
 import projectsList from "../../globals/projectsList";
-import BackgroundElement from "../../shared_components/BackgroundElement";
+import BackgroundElement from "../../global_components/BackgroundElement";
 
 interface ProjectPageBaseProps {
   projectIndex: number

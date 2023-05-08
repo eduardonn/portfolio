@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import Expandable from "../../shared_components/Expandable";
+import Expandable from "../../global_components/Expandable";
 import { HomePageSection } from "./HomePageBase";
 
 const AboutMeSection: Component = () => {
