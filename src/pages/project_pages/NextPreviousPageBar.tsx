@@ -1,6 +1,9 @@
 import { Component, JSX, Show } from 'solid-js';
 import { A } from '@solidjs/router';
-import { RouterLink } from './types/types';
+
+interface RouterLink {
+  route: string, title: string
+}
 
 export interface NextPreviousPageBarProps {
   previous?: RouterLink
@@ -16,7 +19,7 @@ interface LinkButtonProps {
 const LinkButton = ({ info, side, children }: LinkButtonProps) => {
   return (
     <A
-      href={info ? info.link : ''}
+      href={info ? info.route : ''}
       title={info?.title}
       class={'px-4 py-1 h-full' +
         (info 
@@ -36,7 +39,7 @@ const NextPreviousPageBar: Component<NextPreviousPageBarProps> = ({ previous, ne
       border-b-2 border-black
     '>
       <LinkButton info={previous} side='left'>Previous Project</LinkButton>
-      <LinkButton info={{ link: '/', title: 'Home' }}>Home</LinkButton>
+      <LinkButton info={{ route: '/', title: 'Home' }}>Home</LinkButton>
       <LinkButton info={next} side='right'>Next Project</LinkButton>
     </div>
   )

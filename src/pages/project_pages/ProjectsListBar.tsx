@@ -58,7 +58,7 @@ const ProjectsListBar = ({ projectIndex }: { projectIndex: number }) => {
         <For each={projectsList}>{(item, index) => (
           <a
             ref={el => { if (index() === projectIndex) selectedLinkElement = el }}
-            href={item.link} class='relative p-1 group'>
+            href={item.route} class='relative p-1 group'>
             {item.title}
             <div id='black-bar' class={`absolute h-[10%] bottom-0 left-0 bg-black
                 ${(index() === projectIndex) ? 'w-full' : 'w-0'}

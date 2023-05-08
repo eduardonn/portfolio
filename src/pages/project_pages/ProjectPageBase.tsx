@@ -31,16 +31,16 @@ const ProjectPageBase = ({ projectIndex, children } : ProjectPageBaseProps) => {
   return (
     <div>
       <BackgroundElement />
-      <div style='background-image: radial-gradient(circle at 50% 200%,
-          var(--projects-list-bar-bg-grad-1), var(--projects-list-bar-bg-grad-2) 70%'>
+      <div style='background-image: radial-gradient(circle at 50% 300%,
+          var(--projects-list-bar-bg-grad-1), var(--projects-list-bar-bg-grad-2) 60%'>
         <ProjectsListBar projectIndex={projectIndex} />
         <NextPreviousPageBar
           previous={projectsList[projectIndex - 1] && {
-            link: projectsList[projectIndex - 1]?.link,
+            route: projectsList[projectIndex - 1]?.route,
             title: projectsList[projectIndex - 1]?.title
           }}
           next={projectsList[projectIndex + 1] && {
-            link: projectsList[projectIndex + 1]?.link,
+            route: projectsList[projectIndex + 1]?.route,
             title: projectsList[projectIndex + 1]?.title
           }}
         />

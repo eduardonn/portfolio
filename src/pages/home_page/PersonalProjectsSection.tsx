@@ -14,7 +14,7 @@ const PersonalProjectsSection: Component = () => {
             <ProjectCard
               title={project.title}
               description={project.description}
-              link={project.link}
+              route={project.route}
               techStack={project.techStack}
               previewPos={(index() % 2 === 0) ? 'left' : 'right'}
             />

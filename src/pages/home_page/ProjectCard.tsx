@@ -6,12 +6,12 @@ interface ProjectCardProps extends Omit<ProjectInfo, 'component'> {
   previewPos: 'left' | 'right'
 }
 
-const ProjectPreview = ({ link, previewPos } : Pick<ProjectCardProps, 'link' | 'previewPos'>) => {
+const ProjectPreview = ({ route, previewPos } : Pick<ProjectCardProps, 'route' | 'previewPos'>) => {
   const [isHovering, setIsHovering] = createSignal(false);
   
   return (
     <a 
-      href={link}
+      href={route}
       class={`absolute aspect-video h-[var(--preview-height)]
         bg-gray-200 hover:scale-[1.4] transition-transform duration-500
         border-purple-900 border-2
@@ -45,14 +45,14 @@ const Spacer: Component<Pick<ProjectCardProps, 'previewPos'>> = ({ previewPos })
   );
 }
 
-const TitleSection: Component<Pick<ProjectCardProps, 'previewPos' | 'link' | 'title'>> = (
-  { previewPos, link, title }
+const TitleSection: Component<Pick<ProjectCardProps, 'previewPos' | 'route' | 'title'>> = (
+  { previewPos, route, title }
 ) => {
   return (
     <div class='h-20 bg-[var(--project-card-title-bg)]'>
       <Spacer previewPos={previewPos} />
       <div class='flex justify-center items-center h-full'>
-        <a href={link} class={`text-lg font-semibold text-white`}>
+        <a href={route} class={`text-lg font-semibold text-white`}>
           {title}
         </a>
       </div>
@@ -61,8 +61,8 @@ const TitleSection: Component<Pick<ProjectCardProps, 'previewPos' | 'link' | 'ti
 }
 
 const DescriptionSection: 
-  Component<Pick<ProjectCardProps, 'previewPos' | 'link' | 'description' | 'techStack'>> = (
-  { previewPos, description, link, techStack }
+  Component<Pick<ProjectCardProps, 'previewPos' | 'route' | 'description' | 'techStack'>> = (
+  { previewPos, description, route, techStack }
 ) => {
   return (
     <div class={`h-full bg-[var(--project-card-description-bg)]`}>
@@ -70,7 +70,7 @@ const DescriptionSection:
       <div class='mb-[calc(var(--preview-height)/2)] md:mb-0 h-full'>
         <div class='p-4 flex flex-col gap-3 h-full grow'>
           <p>{description}</p>
-          <a href={link} class='text-gray-600 w-fit'>See project &gt&gt</a>
+          <a href={route} class='text-gray-600 w-fit'>See project &gt&gt</a>
           <div class='flex mt-auto gap-5'>
             <For each={techStack}>{(techName) =>
               <TechIcon iconName={techName} />
@@ -81,7 +81,7 @@ const DescriptionSection:
     </div>);
 }
 
-const ProjectCard: Component<ProjectCardProps> = ({ title, description, link, previewPos = 'left', techStack }) => {
+const ProjectCard: Component<ProjectCardProps> = ({ title, description, route, previewPos = 'left', techStack }) => {
   return (
     <div
       style='
@@ -96,17 +96,17 @@ const ProjectCard: Component<ProjectCardProps> = ({ title, description, link, pr
       }
     `}>
       <ProjectPreview 
-        link={link} 
+        route={route} 
         previewPos={previewPos}
       />
       <TitleSection 
         title={title} 
-        link={link} 
+        route={route} 
         previewPos={previewPos}
       />
       <DescriptionSection 
         description={description} 
-        link={link}
+        route={route}
         techStack={techStack}
         previewPos={previewPos}
       />
