@@ -13,14 +13,20 @@ const SnippingToolDigitizerPage: Component = () => {
         <p>
           Have you ever wanted to copy some text, but the source was an image?
         </p>
-        <div class='h-48 w-fit mx-auto bg-red-500 aspect-video'></div>
+        <div class='flex items-center justify-center text-center h-48 w-fit mx-auto bg-red-500 aspect-video'>
+          [Short video of someone trying to copy some text and dragging the image accidentally]
+        </div>
         <p>
           The Snipping Tool Digitizer allow users to take a screenshot of one portion of the screen and immediately get the text in the clipboard ready to be pasted anywhere.
         </p>
-        <div class='h-48 w-fit mx-auto bg-blue-500 aspect-video'></div>
+        <div class='flex items-center justify-center text-center h-48 w-fit mx-auto bg-blue-500 aspect-video'>[Demo video]</div>
         <p>
-          The UI was made with Python and Tkinter, which allows users to take a  screenshot and forwards it to Python-tesseract - an optical character recognition (OCR) tool for python - to digitize it.
+          The UI was made with Python and Tkinter, which takes care of grabbing the screenshot and forwarding it to Python-tesseract - an optical character recognition (OCR) tool for python - and later on, inserting into the clipboard.
         </p>
+        <a 
+          class="w-fit"
+          href={projectsList[projectIndex].repoLink}
+          target="_blank">Repo</a>
       </div>
     </ProjectPageBase>
   );
