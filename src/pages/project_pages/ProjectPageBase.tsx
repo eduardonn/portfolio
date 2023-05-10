@@ -3,6 +3,7 @@ import ProjectsListBar from "./ProjectsListBar";
 import NextPreviousPageBar from "./NextPreviousPageBar";
 import projectsList from "../../globals/projectsList";
 import BackgroundElement from "../../global_components/BackgroundElement";
+import Footer from "./Footer";
 
 interface ProjectPageBaseProps {
   projectIndex: number
@@ -48,6 +49,7 @@ const ProjectPageBase = ({ projectIndex, children } : ProjectPageBaseProps) => {
       <div class='px-[5vw] sm:px-[15vw]'>
         {children}
       </div>
+      <Footer />
     </div>
   )
 }
