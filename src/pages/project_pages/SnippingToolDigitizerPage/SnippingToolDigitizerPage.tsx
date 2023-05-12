@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import ProjectPageBase, { ProjectMainTitle } from '../ProjectPageBase';
+import ProjectPageBase, { ProjectContentSection, ProjectMainTitle } from '../ProjectPageBase';
 import projectsList from '../../../globals/projectsList';
 import useProjectIndex from '../useProjectIndex';
 
@@ -9,7 +9,7 @@ const SnippingToolDigitizerPage: Component = () => {
   return (
     <ProjectPageBase projectIndex={projectIndex}>
       <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
-      <div class='flex flex-col gap-8'>
+      <ProjectContentSection>
         <p>
           Have you ever wanted to copy some text, but the source was an image?
         </p>
@@ -23,11 +23,14 @@ const SnippingToolDigitizerPage: Component = () => {
         <p>
           The UI was made with Python and Tkinter, which takes care of grabbing the screenshot and forwarding it to Python-tesseract - an optical character recognition (OCR) tool for python - and later on, inserting into the clipboard.
         </p>
+      </ProjectContentSection>
+      <ProjectContentSection>
         <a 
           class="w-fit"
           href={projectsList[projectIndex].repoLink}
-          target="_blank">Repo</a>
-      </div>
+          target="_blank">Repo
+        </a>
+      </ProjectContentSection>
     </ProjectPageBase>
   );
 }

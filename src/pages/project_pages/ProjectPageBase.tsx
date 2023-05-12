@@ -16,15 +16,17 @@ export const ProjectMainTitle = ({ children }: { children: JSX.Element }) => {
   )
 }
 
-export const ProjectSubHeader1 = ({ children }: { children: JSX.Element }) => {
-  return (
-    <h2 class='text-2xl mt-2 ml-0'>{children}</h2>
-  )
+interface ContentSectionProps {
+  title?: string
+  children: JSX.Element
 }
 
-export const ProjectContentSection = ({ children }: { children: JSX.Element }) => {
+export const ProjectContentSection = ({ title, children }: ContentSectionProps) => {
   return (
-    <section class='flex flex-col gap-3'>{children}</section>
+    <section class='flex flex-col gap-3 mb-8'>
+      <h2 class='text-2xl ml-0'>{title}</h2>
+      {children}
+    </section>
   )
 }
 
@@ -46,7 +48,7 @@ const ProjectPageBase = ({ projectIndex, children } : ProjectPageBaseProps) => {
           }}
         />
       </div>
-      <div class='px-[5vw] sm:px-[15vw]'>
+      <div class='pb-10 px-[5vw] sm:px-[15vw]'>
         {children}
       </div>
       <Footer />
