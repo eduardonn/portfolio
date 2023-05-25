@@ -1,41 +1,21 @@
-import { Component, createSignal, JSX, onCleanup, onMount } from "solid-js";
+import { Component, createSignal, JSXElement } from "solid-js";
 
 interface ExpandableProps {
   class?: string
-  children: JSX.Element
+  children: JSXElement
 }
 
 const Expandable: Component<ExpandableProps> = (props) => {
   const [expanded, setExpanded] = createSignal(false);
-  const [contentHeight, setContentHeight] = createSignal(0);
   let contentDiv: HTMLDivElement;
-    
-  const updateContentHeight = () => {
-    // Setting border, otherwise getBoundingClientRect().height doesn't include margins
-    // Side effect: height is calculated with the border and content gets
-    // squished by border's width
-    contentDiv.style.border = 'solid 1px transparent';
-    setContentHeight(contentDiv.getBoundingClientRect().height);
-    contentDiv.style.border = '';
-  };
-  
-  onMount(() => {
-    updateContentHeight();
-
-    window.addEventListener('resize', updateContentHeight);
-
-    onCleanup(() => {
-      window.removeEventListener('resize', updateContentHeight);
-    });
-  })
 
   return (
     <div class='flex flex-col relative'>
       <div
-        style={`height: ${expanded() ? contentHeight() : '0'}px`}
-        class='overflow-hidden transition-[height] ease-in-out duration-300'
+        style={`grid-template-rows: ${expanded() ? '1' : '0'}fr`}
+        class='grid transition-[grid-template-rows] ease-in-out duration-300'
       >
-        <div ref={contentDiv!}>
+        <div class='overflow-hidden' ref={contentDiv!}>
           {props.children}
         </div>
       </div>
@@ -44,7 +24,6 @@ const Expandable: Component<ExpandableProps> = (props) => {
         onClick={() => {
           if (expanded() && contentDiv.getBoundingClientRect().top < 0)
             contentDiv.scrollIntoView({ behavior: 'smooth' });
-          updateContentHeight();
           setExpanded(state => !state);
         }}
       >
