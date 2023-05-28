@@ -1,23 +1,47 @@
-import { For, createSignal, onMount } from "solid-js";
+import { For, createSignal, onCleanup, onMount } from "solid-js";
 import projectsList from "../../globals/projectsList";
+import { A } from "@solidjs/router";
 
 const ProjectsListBar = ({ projectIndex }: { projectIndex: number }) => {
   const xMargin = 5;
-  const [scroll, setScroll] = createSignal(xMargin);
+  const [scroll, rawSetScroll] = createSignal(0);
   let contentDiv: HTMLDivElement;
   let selectedLinkElement: HTMLAnchorElement;
   let firstTouchX = 0;
   let firstTouchPos = 0;
 
-  onMount(() => {
+  const setScroll = (newScrollValue: number) => {
+    if (newScrollValue > xMargin) {
+      rawSetScroll(xMargin);
+      return;
+    }
+
+    const scrollLimit = 
+      -contentDiv.getBoundingClientRect().width + window.innerWidth - xMargin;
+    if (newScrollValue < scrollLimit) {
+      rawSetScroll(scrollLimit);
+      return;
+    }
+
+    rawSetScroll(newScrollValue);
+  }
+
+  const initScrollValue = () => {
     const initialScrollValue = 
       - selectedLinkElement.getBoundingClientRect().x
       + window.innerWidth / 2
       - selectedLinkElement.getBoundingClientRect().width / 2;
 
-    if (initialScrollValue > xMargin) return;
-
     setScroll(initialScrollValue);
+  }
+
+  onMount(() => {
+    initScrollValue();
+
+    window.addEventListener('load', initScrollValue);
+    window.addEventListener('resize', initScrollValue);
+    onCleanup(() => window.removeEventListener('load', initScrollValue));
+    onCleanup(() => window.removeEventListener('resize', initScrollValue));
   });
 
   return (
@@ -25,38 +49,27 @@ const ProjectsListBar = ({ projectIndex }: { projectIndex: number }) => {
       class='overflow-hidden'
       onWheel={(e => {
         e.preventDefault();
-        if ((e.deltaY < 0 && scroll() >= xMargin) ||
-            (e.deltaY > 0 && scroll() <= -contentDiv.getBoundingClientRect().width
-              + window.innerWidth - xMargin))
-          return;
-
-        setScroll(prev => prev - e.deltaY);
+        const newScrollValue = scroll() - (e.deltaX === 0 ? e.deltaY : e.deltaX);
+        setScroll(newScrollValue);
       })}
       onTouchStart={e => {
         firstTouchPos = scroll();
         firstTouchX = e.touches[0].clientX;
-        console.log(contentDiv.getBoundingClientRect().x);
       }}
       onTouchMove={e => {
         const deltaX = firstTouchX - e.touches[0].clientX;
         const newScrollValue = firstTouchPos - deltaX;
-
-        if (newScrollValue >= xMargin ||
-            newScrollValue <= -contentDiv.getBoundingClientRect().width + window.innerWidth - xMargin)
-        return;
-
         setScroll(newScrollValue);
       }}
     >
       <div
         ref={contentDiv!}
         style={`transform: translateX(${scroll()}px);`}
-        class='flex relative gap-6 justify-center
-          w-full min-w-max transition-transform
+        class='flex relative gap-6 justify-center w-full min-w-max
           before:absolute before:w-[120%] before:h-full'
       >
         <For each={projectsList}>{(item, index) => (
-          <a
+          <A
             ref={el => { if (index() === projectIndex) selectedLinkElement = el }}
             href={item.route} class='relative p-1 group'>
             {item.title}
@@ -65,7 +78,7 @@ const ProjectsListBar = ({ projectIndex }: { projectIndex: number }) => {
                 group-hover:w-full transition-all duration-300
               `}
             ></div>
-          </a>
+          </A>
         )}</For>
       </div>
     </div>
