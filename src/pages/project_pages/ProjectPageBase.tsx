@@ -4,6 +4,7 @@ import NextPreviousPageBar from "./NextPreviousPageBar";
 import projectsList from "../../globals/projectsList";
 import BackgroundElement from "../../global_components/BackgroundElement";
 import Footer from "./Footer";
+import WobblyDiv from "../../global_components/WobblyDiv";
 
 interface ProjectPageBaseProps {
   projectIndex: number
@@ -23,9 +24,11 @@ interface ContentSectionProps {
 
 export const ProjectContentSection = ({ title, children }: ContentSectionProps) => {
   return (
-    <section class='flex flex-col gap-3 mb-8'>
-      <h2 class='text-2xl ml-0'>{title}</h2>
-      {children}
+    <section class='mb-6'>
+      <h2 class='text-3xl mb-4'>{title}</h2>
+      <div class='flex flex-col gap-2'>
+        {children}
+      </div>
     </section>
   )
 }
@@ -34,8 +37,16 @@ const ProjectPageBase = ({ projectIndex, children } : ProjectPageBaseProps) => {
   return (
     <div>
       <BackgroundElement />
-      <div style='background-image: radial-gradient(circle at 50% 300%,
-          var(--projects-list-bar-bg-grad-1), var(--projects-list-bar-bg-grad-2) 60%'>
+      <WobblyDiv
+        wavesForceMax={5}
+        svgBackground={
+          <radialGradient id='radialGradient' cx='50%' cy='90%' r='90%' fx='50%' fy='90%'>
+            <stop style='stop-color:var(--main-bar-bg-gradient-clr-1)' offset='40%' />
+            <stop style='stop-color:var(--main-bar-bg-gradient-clr-2)' offset='100%' />
+          </radialGradient>
+        }
+        svgFill='url(#radialGradient)'
+      >
         <ProjectsListBar projectIndex={projectIndex} />
         <NextPreviousPageBar
           previous={projectsList[projectIndex - 1] && {
@@ -47,7 +58,7 @@ const ProjectPageBase = ({ projectIndex, children } : ProjectPageBaseProps) => {
             title: projectsList[projectIndex + 1]?.title
           }}
         />
-      </div>
+      </WobblyDiv>
       <div class='pb-10 px-[5vw] sm:px-[15vw]'>
         {children}
       </div>
