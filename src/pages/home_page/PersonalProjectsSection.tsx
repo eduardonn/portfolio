@@ -4,7 +4,6 @@ import ProjectCard from "./ProjectCard";
 import projectsList from "../../globals/projectsList";
 
 const PersonalProjectsSection: Component = () => {
-
   return (
     <HomePageSection>
       <div class='pb-16'>
@@ -15,11 +14,11 @@ const PersonalProjectsSection: Component = () => {
               title={project.title}
               description={project.description}
               route={project.route}
+              mediaFileName={project.mediaFileName}
               techStack={project.techStack}
               previewPos={(index() % 2 === 0) ? 'left' : 'right'}
             />
           }</For>
-          
         </div>
       </div>
     </HomePageSection>
