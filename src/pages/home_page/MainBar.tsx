@@ -38,7 +38,7 @@ const MainBar: Component = () => {
     <WobblyDiv
       resolution={15}
       wavesForceMax={6}
-      background={
+      svgBackground={
         <radialGradient id='radialGradient' cx='50%' cy='90%' r='90%' fx='50%' fy='90%'>
           <stop style='stop-color:var(--main-bar-bg-gradient-clr-1)' offset='40%' />
           <stop style='stop-color:var(--main-bar-bg-gradient-clr-2)' offset='100%' />

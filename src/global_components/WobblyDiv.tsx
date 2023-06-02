@@ -122,15 +122,15 @@ class WobblyPointsEngine {
 }
 
 interface WobblyDivProps {
-  resolution: number;
+  resolution?: number;
   svgFill: string;
   wavesForceMax?: number;
-  background?: JSX.Element;
+  svgBackground?: JSX.Element;
   children?: JSX.Element;
 }
 
 const WobblyDiv: Component<WobblyDivProps> = 
-    ({resolution = 20, wavesForceMax = 10, svgFill, background, children}) => {
+    ({resolution = 10, wavesForceMax = 10, svgFill, svgBackground, children}) => {
   let contentElement: HTMLDivElement;
   
   const pointsEngine = new WobblyPointsEngine(resolution);
@@ -186,8 +186,8 @@ const WobblyDiv: Component<WobblyDivProps> =
       onClick={(e) => 
         pointsEngine.addForceWave(e.clientX / window.innerWidth, wavesForceMax)}
     >
-      <svg class='absolute w-full overflow-visible'>
-        {background}
+      <svg class='absolute inset-0 overflow-visible -z-50'>
+        {svgBackground}
         <path ref={pointsEngine.svgElement} fill={svgFill} />
       </svg>
       {children}
