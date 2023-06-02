@@ -2,19 +2,7 @@ import type { Component } from 'solid-js';
 import ProjectPageBase, { ProjectContentSection, ProjectMainTitle } from '../ProjectPageBase';
 import useProjectIndex from '../useProjectIndex';
 import projectsList from '../../../globals/projectsList';
-
-interface MediaProps {
-  src: string
-}
-
-const Media: Component<MediaProps> = ({ src }) => {
-  return (
-    <img
-      src={src}
-      class='sm:mx-6 max-h-[512px] aspect-video'
-    />
-  )
-}
+import Media from '../Media';
 
 const MemorizationAppPage: Component = () => {
   const projectIndex = useProjectIndex();
