@@ -3,6 +3,19 @@ import ProjectPageBase, { ProjectContentSection, ProjectMainTitle } from '../Pro
 import useProjectIndex from '../useProjectIndex';
 import projectsList from '../../../globals/projectsList';
 
+interface MediaProps {
+  src: string
+}
+
+const Media: Component<MediaProps> = ({ src }) => {
+  return (
+    <img
+      src={src}
+      class='sm:mx-6 max-h-[512px] aspect-video'
+    />
+  )
+}
+
 const MemorizationAppPage: Component = () => {
   const projectIndex = useProjectIndex();
 
@@ -16,12 +29,15 @@ const MemorizationAppPage: Component = () => {
         <p>
           This application allows you to create notes and assign a level of memorization to each of them, so you can keep track of what needs reviewing at which frequency, and also provides a reviewing functionality.
         </p>
+        <Media
+          src={'/src/assets/project_previews/'
+            + projectsList[projectIndex].mediaFileName + '.gif'}
+        />
       </ProjectContentSection>
       <ProjectContentSection title='Cards Tab'>
         <p>
           The first tab shows all the notes created and the level of memorization of each of them in a practical fashion and allows the editting of any note with one click.
         </p>
-        <div class='h-48 w-fit mx-auto bg-red-500 aspect-video'></div>
       </ProjectContentSection>
       <ProjectContentSection title='Reviewing'>
         <p>
