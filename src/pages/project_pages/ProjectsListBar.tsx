@@ -65,8 +65,7 @@ const ProjectsListBar = ({ projectIndex }: { projectIndex: number }) => {
       <div
         ref={contentDiv!}
         style={`transform: translateX(${scroll()}px);`}
-        class='flex relative gap-6 justify-center w-full min-w-max
-          before:absolute before:w-[120%] before:h-full'
+        class='flex relative gap-6 justify-center w-full min-w-max'
       >
         <For each={projectsList}>{(item, index) => (
           <A
@@ -76,8 +75,7 @@ const ProjectsListBar = ({ projectIndex }: { projectIndex: number }) => {
             <div id='black-bar' class={`absolute h-[10%] bottom-0 left-0 bg-black
                 ${(index() === projectIndex) ? 'w-full' : 'w-0'}
                 group-hover:w-full transition-all duration-300
-              `}
-            ></div>
+            `}></div>
           </A>
         )}</For>
       </div>
