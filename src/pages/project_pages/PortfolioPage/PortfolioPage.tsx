@@ -29,7 +29,7 @@ const PortfolioPage: Component = () => {
       </ProjectContentSection>
       <ProjectContentSection title='Points to Improve'>
         <ul>
-          <li>- Make the lines in the Wobbly Div smoother, i.e. instead of using lines on the svg, it should be possible to use curves to make it completely smooth</li>
+          <li>Make the lines in the Wobbly Div smoother, i.e. instead of using lines on the svg, it should be possible to use curves to make it completely smooth</li>
         </ul>
       </ProjectContentSection>
     </ProjectPageBase>

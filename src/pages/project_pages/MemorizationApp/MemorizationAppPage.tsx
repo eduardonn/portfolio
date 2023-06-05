@@ -43,9 +43,9 @@ const MemorizationAppPage: Component = () => {
       </ProjectContentSection>
       <ProjectContentSection title='Points to Improve'>
         <ul>
-          <li>- Search filters</li>
-          <li>- Adding drawings and images as memos</li>
-          <li>- Personalized reviewing: such as reviewing only one category, or only a range of levels of memorization</li>
+          <li>Search filters</li>
+          <li>Adding drawings and images as memos</li>
+          <li>Personalized reviewing: such as reviewing only one category, or only a range of levels of memorization</li>
         </ul>
       </ProjectContentSection>
     </ProjectPageBase>

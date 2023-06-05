@@ -17,15 +17,15 @@ const AlgorithmVisualizerPage: Component = () => {
           Inserting a new algorithm is a three step process:
         </p>
         <ol>
-          <li>1. Implement method with the same name</li>
-          <li>2. Insert the name of the algorithm and the respective method in the algorithms list</li>
-          <li>3. Create callbacks for the animations</li>
+          <li class='list-decimal'>Implement method with the same name</li>
+          <li class='list-decimal'>Insert the name of the algorithm and the respective method in the algorithms list</li>
+          <li class='list-decimal'>Create callbacks for the animations</li>
         </ol>
       </ProjectContentSection>
       <ProjectContentSection title='Points to improve'>
         <ul>
-          <li>- Make the 3D experience richer, such as including visual effects and better textures</li>
-          <li>- Implement more algorithms</li>
+          <li>Make the 3D experience richer, such as including visual effects and better textures</li>
+          <li>Implement more algorithms</li>
         </ul>
       </ProjectContentSection>
     </ProjectPageBase>

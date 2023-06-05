@@ -8,7 +8,7 @@ const Media: Component<MediaProps> = ({ src }) => {
   return (
     <img
       src={src}
-      class='lg:mx-[10vw] max-h-[512px] aspect-video'
+      class='lg:mx-[10vw] max-h-[512px] aspect-video my-4'
     />
   )
 }

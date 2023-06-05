@@ -24,7 +24,7 @@ interface ContentSectionProps {
 
 export const ProjectContentSection = ({ title, children }: ContentSectionProps) => {
   return (
-    <section class='mb-6'>
+    <section class='mb-8'>
       <h2 class='text-3xl mb-4'>{title}</h2>
       <div class='flex flex-col gap-2'>
         {children}
