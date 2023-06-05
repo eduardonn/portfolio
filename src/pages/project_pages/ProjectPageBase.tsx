@@ -3,7 +3,7 @@ import ProjectsListBar from "./ProjectsListBar";
 import NextPreviousPageBar from "./NextPreviousPageBar";
 import projectsList from "../../globals/projectsList";
 import BackgroundElement from "../../global_components/BackgroundElement";
-import Footer from "./Footer";
+import Footer from "../../global_components/Footer";
 import WobblyDiv from "../../global_components/WobblyDiv";
 
 interface ProjectPageBaseProps {

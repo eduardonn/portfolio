@@ -3,6 +3,7 @@ import AboutMeSection from "./AboutMeSection";
 import MainBar from "./MainBar";
 import PersonalProjectsSection from "./PersonalProjectsSection";
 import BackgroundElement from "../../global_components/BackgroundElement";
+import Footer from "../../global_components/Footer";
 
 const Home: Component = () => {
   return (<>
@@ -15,11 +16,7 @@ const Home: Component = () => {
           <AboutMeSection />
           <PersonalProjectsSection />
         </main>
-        <footer>
-          <div class='flex p-2 bg-black text-white text-sm'>
-            <span>Created by Eduardo Franke · 2023</span>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );
