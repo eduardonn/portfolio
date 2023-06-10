@@ -13,7 +13,7 @@ interface ProjectPageBaseProps {
 
 export const ProjectMainTitle = ({ children }: { children: JSX.Element }) => {
   return (
-    <h1 class='text-3xl text-center my-8'>{children}</h1>
+    <h1 class='text-4xl text-center my-8'>{children}</h1>
   )
 }
 

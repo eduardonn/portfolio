@@ -17,35 +17,43 @@ const MemorizationAppPage: Component = () => {
         <p>
           This application allows you to create notes and assign a level of memorization to each of them, so you can keep track of what needs reviewing at which frequency, and also provides a reviewing functionality.
         </p>
-        <Media
-          src={'/src/assets/project_previews/'
-            + projectsList[projectIndex].mediaFileName + '.gif'}
-        />
+        <Media src={'/src/assets/project_previews/'
+          + projectsList[projectIndex].mediaFileName + '.gif'} />
       </ProjectContentSection>
-      <ProjectContentSection title='Cards Tab'>
+      <ProjectContentSection title='Memos Tab'>
         <p>
           The first tab shows all the notes created and the level of memorization of each of them in a practical fashion and allows the editting of any note with one click.
         </p>
+        <Media src={'/src/assets/memorization_app/memos_tab.png'} />
       </ProjectContentSection>
       <ProjectContentSection title='Reviewing'>
         <p>
           The reviewing functionality shows users different notes in sequence according to each note's level of memorization and allows for reassigning of a new level. Notes with a lower level of memorization (meaning that they would be more easily forgotten) are showed more frequently.
         </p>
-        <div class='h-48 w-fit mx-auto bg-red-200 aspect-video'></div>
+        <Media src={'/src/assets/memorization_app/review_tab.png'} />
+      </ProjectContentSection>
+      <ProjectContentSection title='Progress and Settings Tabs'>
+        <p>
+          Still to be implemented. The progress tab will show stats, such as how many words were reviewed, how long the user spent reviewing memos, or how many memos exist for each level of memorization.
+        </p>
       </ProjectContentSection>
       <ProjectContentSection title='Technologies Used'>
         <p>
           For the design, I used MaterialUI, because it provides an easy way of styling an application for non-designers.
         </p>
         <p>
-          For the database, I used PostgreSQL, because it seemed to make sense for fetching cards and its associated categories for search filters and personalized reviewing (still to be implemented).
+          For the database, I used PostgreSQL, because of the need for fetching cards and its associated categories for search filters and personalized reviewing (still to be implemented).
+        </p>
+        <p>
+          I've also used Next.js, though only for learning purposes.
         </p>
       </ProjectContentSection>
-      <ProjectContentSection title='Points to Improve'>
+      <ProjectContentSection title='Future Improvements'>
         <ul>
-          <li>Search filters</li>
-          <li>Adding drawings and images as memos</li>
-          <li>Personalized reviewing: such as reviewing only one category, or only a range of levels of memorization</li>
+          <li>Add search filters</li>
+          <li>Allow for adding drawings and images as memos</li>
+          <li>Implement review and settings tabs</li>
+          <li>Add personalized reviewing: such as choosing only one category, or only a range of levels of memorization</li>
         </ul>
       </ProjectContentSection>
     </ProjectPageBase>

@@ -2,6 +2,7 @@ import type { Component } from 'solid-js';
 import ProjectPageBase, { ProjectContentSection, ProjectMainTitle } from '../ProjectPageBase';
 import projectsList from '../../../globals/projectsList';
 import useProjectIndex from '../useProjectIndex';
+import Media from '../Media';
 
 const CamSurSystemPage: Component = () => {
   const projectIndex = useProjectIndex();
@@ -11,13 +12,16 @@ const CamSurSystemPage: Component = () => {
       <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
       <ProjectContentSection>
         <p>
-          This is a camera surveillance system that uses AI for detecting people on the screen and alerting the user. This project was presented as my college's final project. The objective is to increase home security using only software and a spare computer for processing the AI.
+          This is a camera surveillance system that uses AI for detecting people on the screen and alerting the user. This project was presented as my college's final project. The objective is to increase home security using only software and a spare computer for processing the AI model and the images.
         </p>
+        <Media src={'/src/assets/project_previews/'
+          + projectsList[projectIndex].mediaFileName + '.gif'} />
       </ProjectContentSection>
       <ProjectContentSection title='Triggers'>
         <p>
           The trigger system allows users to create triggers that are fired when certain conditions are met, which includes: a person being detected in an area drawn by the user, time of the day, and the maximum amount of time the detection spends inside the area. When it fires, it sends a notification or sound an alarm on the user's phone.
         </p>
+        <Media src="/src/assets/camera_surveillance_system/Interface_Triggers_Manager.jpg" />
       </ProjectContentSection>
       <ProjectContentSection title='Windows Application'>
         <p>
@@ -26,6 +30,7 @@ const CamSurSystemPage: Component = () => {
         <p>
           The idea was to use only one programming language to execute the idea as quickly as possible, and since Python was chosen for OpenCV, the interface was made using PyQt5 - a Python wrapper for Qt5.
         </p>
+        <Media src="/src/assets/camera_surveillance_system/Interface_Home.jpg" />
       </ProjectContentSection>
       <ProjectContentSection title='Android Application'>
         <p>
@@ -34,6 +39,20 @@ const CamSurSystemPage: Component = () => {
         <p>
           To make this app I decided to use Flutter, which was way quicker to learn than PyQt5, and its programming language: Dart, which is really similar to C# and was pretty easy to learn too.
         </p>
+        <Media src="/src/assets/camera_surveillance_system/Interfaces_Android.jpg" />
+      </ProjectContentSection>
+      <ProjectContentSection title='Future Improvements'>
+        <ul>
+          <li>
+            Make optimizations on the image processing, for example, only use person detection when movement is detected
+          </li>
+          <li>
+            Allow for more cameras to be connected
+          </li>
+          <li>
+            Better the communication with the mobile app
+          </li>
+        </ul>
       </ProjectContentSection>
     </ProjectPageBase>
   );
