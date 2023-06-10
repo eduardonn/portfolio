@@ -15,7 +15,7 @@ const ProjectPreview = ({ route, mediaFileName, previewPos } :
   return (
     <A 
       href={route}
-      class={`absolute aspect-video h-[var(--preview-height)]
+      class={`absolute aspect-video h-[var(--preview-height)] z-50
         shadow-2xl bg-gray-200 hover:scale-[1.4] transition-transform duration-500
         bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
         md:top-1/2 md:translate-y-[-50%]
