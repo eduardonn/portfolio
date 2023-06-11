@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import ProjectPageBase, { ProjectContentSection, ProjectMainTitle } from '../ProjectPageBase';
+import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
 import projectsList from '../../../globals/projectsList';
 import useProjectIndex from '../useProjectIndex';
 import Media from '../Media';
@@ -10,6 +10,7 @@ const SnippingToolDigitizerPage: Component = () => {
   return (
     <ProjectPageBase projectIndex={projectIndex}>
       <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
+      <RepoButton href={projectsList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
           Have you ever wanted to copy some text, but the source was an image?
@@ -31,14 +32,6 @@ const SnippingToolDigitizerPage: Component = () => {
             Automatically straighten text before feeding to the OCR to yield better results
           </li>
         </ul>
-      </ProjectContentSection>
-      <ProjectContentSection>
-        <a 
-          class="w-fit"
-          href={projectsList[projectIndex].repoLink}
-          target="_blank">
-            Repo
-        </a>
       </ProjectContentSection>
     </ProjectPageBase>
   );

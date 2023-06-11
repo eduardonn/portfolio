@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import ProjectPageBase, { ProjectContentSection, ProjectMainTitle } from '../ProjectPageBase';
+import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
 import useProjectIndex from '../useProjectIndex';
 import projectsList from '../../../globals/projectsList';
 import Media from '../Media';
@@ -10,6 +10,7 @@ const AlgorithmVisualizerPage: Component = () => {
   return (
     <ProjectPageBase projectIndex={projectIndex}>
       <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
+      <RepoButton href={projectsList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
           I built this project to not only learn about Three.js and React, but also Sorting Algorithms. For now, four of them are implemented: Insertion, Selection, Quick and Merge, but the project was made to quickly accommodate new algorithms and their animations.

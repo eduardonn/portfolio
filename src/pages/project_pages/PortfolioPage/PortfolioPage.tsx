@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import ProjectPageBase, { ProjectContentSection, ProjectMainTitle } from '../ProjectPageBase';
+import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
 import projectsList from '../../../globals/projectsList';
 import useProjectIndex from '../useProjectIndex';
 
@@ -9,6 +9,7 @@ const PortfolioPage: Component = () => {
   return (
     <ProjectPageBase projectIndex={projectIndex}>
       <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
+      <RepoButton href={projectsList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
           Despite this portfolio being relatively simple, I learned a great deal of web development making it and I think there are some things worth mentioning.

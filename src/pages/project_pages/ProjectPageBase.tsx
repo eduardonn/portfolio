@@ -1,4 +1,4 @@
-import { JSX } from "solid-js";
+import { Component, JSX } from "solid-js";
 import ProjectsListBar from "./ProjectsListBar";
 import NextPreviousPageBar from "./NextPreviousPageBar";
 import projectsList from "../../globals/projectsList";
@@ -6,12 +6,22 @@ import BackgroundElement from "../../global_components/BackgroundElement";
 import Footer from "../../global_components/Footer";
 import WobblyDiv from "../../global_components/WobblyDiv";
 
-interface ProjectPageBaseProps {
-  projectIndex: number
-  children: JSX.Element
+interface RepoButtonProps {
+  href: string
 }
 
-export const ProjectMainTitle = ({ children }: { children: JSX.Element }) => {
+export const RepoButton: Component<RepoButtonProps> = ({ href }) => {
+  return (
+    <button
+      class='w-fit px-4 font-monospace text-sm rounded
+        bg-[linear-gradient(var(--main-bar-bg-gradient-clr-1),var(--main-bar-bg-gradient-clr-2))]'
+    >
+      <a href={href} target='_blank'>Repo</a>
+    </button>
+  )
+}
+
+export const ProjectMainTitle: Component<{ children: JSX.Element }> = ({ children }) => {
   return (
     <h1 class='text-4xl text-center my-8'>{children}</h1>
   )
@@ -22,7 +32,7 @@ interface ContentSectionProps {
   children: JSX.Element
 }
 
-export const ProjectContentSection = ({ title, children }: ContentSectionProps) => {
+export const ProjectContentSection: Component<ContentSectionProps> = ({ title, children }) => {
   return (
     <section class='mb-8'>
       <h2 class='text-3xl mb-4'>{title}</h2>
@@ -33,7 +43,12 @@ export const ProjectContentSection = ({ title, children }: ContentSectionProps) 
   )
 }
 
-const ProjectPageBase = ({ projectIndex, children } : ProjectPageBaseProps) => {
+interface ProjectPageBaseProps {
+  projectIndex: number
+  children: JSX.Element
+}
+
+const ProjectPageBase: Component<ProjectPageBaseProps> = ({ projectIndex, children }) => {
   return (
     <div>
       <BackgroundElement />

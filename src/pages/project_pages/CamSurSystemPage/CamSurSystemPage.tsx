@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import ProjectPageBase, { ProjectContentSection, ProjectMainTitle } from '../ProjectPageBase';
+import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
 import projectsList from '../../../globals/projectsList';
 import useProjectIndex from '../useProjectIndex';
 import Media from '../Media';
@@ -10,6 +10,7 @@ const CamSurSystemPage: Component = () => {
   return (
     <ProjectPageBase projectIndex={projectIndex}>
       <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
+      <RepoButton href={projectsList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
           This is a camera surveillance system that uses AI for detecting people on the screen and alerting the user. This project was presented as my college's final project. The objective is to increase home security using only software and a spare computer for processing the AI model and the images.

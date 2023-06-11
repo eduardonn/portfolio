@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import ProjectPageBase, { ProjectContentSection, ProjectMainTitle } from '../ProjectPageBase';
+import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
 import useProjectIndex from '../useProjectIndex';
 import projectsList from '../../../globals/projectsList';
 import Media from '../Media';
@@ -10,6 +10,7 @@ const MemorizationAppPage: Component = () => {
   return (
     <ProjectPageBase projectIndex={projectIndex}>
       <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
+      <RepoButton href={projectsList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
           While learning a new language in Duolingo, I've realized that the technique of spaced repetition for memorizing information is very effective. But sometimes, the frequency of reviewing that Duolingo provided didn't always aligned with what I needed. So I've decided to create an app for memorizing not only languages, but any information that can benefit from spaced repetition.
