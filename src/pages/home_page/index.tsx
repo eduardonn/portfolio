@@ -2,22 +2,21 @@ import { Component } from "solid-js";
 import AboutMeSection from "./AboutMeSection";
 import MainBar from "./MainBar";
 import PersonalProjectsSection from "./PersonalProjectsSection";
-import BackgroundElement from "../../global_components/BackgroundElement";
-import Footer from "../../global_components/Footer";
+import BackgroundElement from "../../common_components/BackgroundElement";
+import Footer from "../../common_components/Footer";
+import ScrollTopButton from "../../common_components/ScrollTopButton";
 
 const Home: Component = () => {
   return (<>
-      <div>
-        <header>
-          <MainBar />
-        </header>
-        <main>
-          <BackgroundElement />
-          <AboutMeSection />
-          <PersonalProjectsSection />
-        </main>
-        <Footer />
-      </div>
+      <BackgroundElement />
+      <header>
+        <MainBar />
+      </header>
+      <main>
+        <AboutMeSection />
+        <PersonalProjectsSection />
+      </main>
+      <Footer />
     </>
   );
 };

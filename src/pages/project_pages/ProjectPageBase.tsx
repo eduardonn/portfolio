@@ -1,10 +1,10 @@
 import { Component, JSX } from "solid-js";
 import ProjectsListBar from "./ProjectsListBar";
 import NextPreviousPageBar from "./NextPreviousPageBar";
-import projectsList from "../../globals/projectsList";
-import BackgroundElement from "../../global_components/BackgroundElement";
-import Footer from "../../global_components/Footer";
-import WobblyDiv from "../../global_components/WobblyDiv";
+import projectList from "../../common/projectList";
+import BackgroundElement from "../../common_components/BackgroundElement";
+import Footer from "../../common_components/Footer";
+import WobblyDiv from "../../common_components/WobblyDiv";
 
 interface RepoButtonProps {
   href: string
@@ -35,7 +35,7 @@ interface ContentSectionProps {
 export const ProjectContentSection: Component<ContentSectionProps> = ({ title, children }) => {
   return (
     <section class='mb-8'>
-      <h2 class='text-3xl mb-4'>{title}</h2>
+      <h2 class='text-2xl mb-4'>{title}</h2>
       <div class='flex flex-col gap-2'>
         {children}
       </div>
@@ -64,13 +64,13 @@ const ProjectPageBase: Component<ProjectPageBaseProps> = ({ projectIndex, childr
       >
         <ProjectsListBar projectIndex={projectIndex} />
         <NextPreviousPageBar
-          previous={projectsList[projectIndex - 1] && {
-            route: projectsList[projectIndex - 1]?.route,
-            title: projectsList[projectIndex - 1]?.title
+          previous={projectList[projectIndex - 1] && {
+            route: projectList[projectIndex - 1]?.route,
+            title: projectList[projectIndex - 1]?.title
           }}
-          next={projectsList[projectIndex + 1] && {
-            route: projectsList[projectIndex + 1]?.route,
-            title: projectsList[projectIndex + 1]?.title
+          next={projectList[projectIndex + 1] && {
+            route: projectList[projectIndex + 1]?.route,
+            title: projectList[projectIndex + 1]?.title
           }}
         />
       </WobblyDiv>

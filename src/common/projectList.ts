@@ -5,33 +5,37 @@ export interface ProjectInfo {
   description: string
   route: string
   repoLink: string
-  mediaFileName: string
+  imgFileName: string
+  videoFileName: string
   techStack: Array<AvailableIcons>
 }
 
-const projectsList: Array<ProjectInfo> = [
+const projectList: Array<ProjectInfo> = [
   {
-    title: 'Memorization App',
-    description: "An application for creating notes and helping you review them",
-    route: '/projects/memorization-app',
+    title: 'ReMemo',
+    description: "A tool for creating memos and helping you review them",
+    route: '/projects/rememo',
     repoLink: '/',
-    mediaFileName: 'memorization_app',
+    imgFileName: 'rememo.jpg',
+    videoFileName: 'rememo.gif',
     techStack: ["Next.js", "Typescript", "MaterialUI", "PostgreSQL"],
   },
   {
     title: '3D Sorting Algorithms Visualizer',
-    description: "A web app for visualizing sorting algorithms in a 3D environment",
+    description: "A web application for visualizing sorting algorithms in a 3D environment",
     route: '/projects/3d-sorting-algorithms-visualizer',
     repoLink: 'https://github.com/eduardonn/3d-sorting-algorithms-visualizer',
-    mediaFileName: 'sorting_algorithms_visualizer',
+    imgFileName: 'sorting_algorithms_visualizer.png',
+    videoFileName: 'sorting_algorithms_visualizer.gif',
     techStack: ["React.js", "Typescript", "Three.js"],
   },
   {
     title: 'Snipping Tool Digitizer',
     description: "An image-to-text tool to convert a part of the screen on the fly so you can paste it anywhere in text format",
-    route: '/projects/snipping-tool-digitizer',
+    route: '/projects/screenshot-digitizer',
     repoLink: '/',
-    mediaFileName: 'snipping_tool',
+    imgFileName: 'screenshot_digitizer.jpg',
+    videoFileName: 'screenshot_digitizer.gif',
     techStack: ["Python", "Qt5", "Tesseract-OCR"],
   },
   {
@@ -39,17 +43,19 @@ const projectsList: Array<ProjectInfo> = [
     description: "A camera surveillance system that uses AI for person detection. Built for my college's final project",
     route: '/projects/camera_surveillance_system',
     repoLink: '/',
-    mediaFileName: 'surveillance_system',
+    imgFileName: 'surveillance_system.jpg',
+    videoFileName: 'surveillance_system.gif',
     techStack: ["Flutter", "Qt5", "OpenCV", "Python"],
   },
   {
     title: 'This Website',
-    description: "A website for showing my skills (or the lack of them)",
+    description: "My developer portfolio",
     route: '/projects/portfolio',
     repoLink: '/',
-    mediaFileName: 'portfolio_website',
+    imgFileName: 'portfolio_website.jpg',
+    videoFileName: 'portfolio_website.gif',
     techStack: ["Solid.js", "Typescript", "Tailwind"],
   },
 ];
 
-export default projectsList;
+export default projectList;

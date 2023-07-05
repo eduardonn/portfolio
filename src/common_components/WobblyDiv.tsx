@@ -186,7 +186,7 @@ const WobblyDiv: Component<WobblyDivProps> =
       onClick={(e) => 
         pointsEngine.addForceWave(e.clientX / window.innerWidth, wavesForceMax)}
     >
-      <svg class='absolute inset-0 overflow-visible -z-50'>
+      <svg class='absolute inset-0 overflow-visible -z-10'>
         {svgBackground}
         <path ref={pointsEngine.svgElement} fill={svgFill} />
       </svg>

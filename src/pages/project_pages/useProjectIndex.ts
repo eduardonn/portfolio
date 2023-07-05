@@ -1,9 +1,9 @@
 import { useLocation } from "@solidjs/router";
-import projectsList from "../../globals/projectsList";
+import projectList from "../../common/projectList";
 
 const useProjectIndex = () => {
   const location = useLocation();
-  const projectIndex = projectsList.findIndex(project => project.route === location.pathname);
+  const projectIndex = projectList.findIndex(project => project.route === location.pathname);
 
   return projectIndex
 }

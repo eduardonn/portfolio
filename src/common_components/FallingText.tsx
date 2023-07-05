@@ -1,5 +1,5 @@
 import { Component, For, onCleanup, onMount } from "solid-js";
-import { addAnimatedComponents, deleteAnimatedComponents } from "../globals/animatedElementsStore";
+import { addAnimatedComponents, deleteAnimatedComponents } from "../common/animatedElementsStore";
 
 interface FallingTextProps {
   class?: string;

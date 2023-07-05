@@ -2,9 +2,9 @@ import { Component } from 'solid-js';
 import githubIcon from '../../assets/github.svg';
 import linkedinIcon from '../../assets/linkedin.svg';
 import emailIcon from '../../assets/email.svg';
-import FallingText from '../../global_components/FallingText';
-import { replayAnimations } from '../../globals/animatedElementsStore';
-import WobblyDiv from '../../global_components/WobblyDiv';
+import FallingText from '../../common_components/FallingText';
+import { replayAnimations } from '../../common/animatedElementsStore';
+import WobblyDiv from '../../common_components/WobblyDiv';
 
 const ContactIcons: Component = () => {
   return (

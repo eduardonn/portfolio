@@ -1,6 +1,6 @@
 import type { Component } from 'solid-js';
 import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
-import projectsList from '../../../globals/projectsList';
+import projectList from '../../../common/projectList';
 import useProjectIndex from '../useProjectIndex';
 import Media from '../Media';
 
@@ -9,14 +9,14 @@ const CamSurSystemPage: Component = () => {
 
   return (
     <ProjectPageBase projectIndex={projectIndex}>
-      <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
-      <RepoButton href={projectsList[projectIndex].repoLink} />
+      <ProjectMainTitle>{projectList[projectIndex].title}</ProjectMainTitle>
+      <RepoButton href={projectList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
-          This is a camera surveillance system that uses AI for detecting people on the screen and alerting the user. This project was presented as my college's final project. The objective is to increase home security using only software and a spare computer for processing the AI model and the images.
+          This is a camera surveillance system that uses AI for detecting people on the screen and alerting the user. This project was presented as my college's final project. The objective is to increase home security using only software and a spare computer for gathering the images and processing the AI model.
         </p>
         <Media src={'/src/assets/project_previews/'
-          + projectsList[projectIndex].mediaFileName + '.gif'} />
+          + projectList[projectIndex].videoFileName} />
       </ProjectContentSection>
       <ProjectContentSection title='Triggers'>
         <p>
@@ -26,7 +26,7 @@ const CamSurSystemPage: Component = () => {
       </ProjectContentSection>
       <ProjectContentSection title='Windows Application'>
         <p>
-          The windows app functions as an interface for the user, and a server for the Android app.
+          The windows application functions as an interface for the user, and a server for the Android app.
         </p>
         <p>
           The idea was to use only one programming language to execute the idea as quickly as possible, and since Python was chosen for OpenCV, the interface was made using PyQt5 - a Python wrapper for Qt5.

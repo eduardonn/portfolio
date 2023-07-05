@@ -1,16 +1,16 @@
 import type { Component } from 'solid-js';
 import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
-import projectsList from '../../../globals/projectsList';
+import projectList from '../../../common/projectList';
 import useProjectIndex from '../useProjectIndex';
 import Media from '../Media';
 
-const SnippingToolDigitizerPage: Component = () => {
+const ScreenshotDigitizerPage: Component = () => {
   const projectIndex = useProjectIndex();
 
   return (
     <ProjectPageBase projectIndex={projectIndex}>
-      <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
-      <RepoButton href={projectsList[projectIndex].repoLink} />
+      <ProjectMainTitle>{projectList[projectIndex].title}</ProjectMainTitle>
+      <RepoButton href={projectList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
           Have you ever wanted to copy some text, but the source was an image?
@@ -19,7 +19,7 @@ const SnippingToolDigitizerPage: Component = () => {
           The Snipping Tool Digitizer allow users to take a screenshot of one portion of the screen and immediately get the text in the clipboard ready to be pasted anywhere.
         </p>
         <Media src={'/src/assets/project_previews/'
-          + projectsList[projectIndex].mediaFileName + '.gif'} />
+          + projectList[projectIndex].videoFileName} />
         </ProjectContentSection>
         <ProjectContentSection title='Technologies Used'>
         <p>
@@ -37,4 +37,4 @@ const SnippingToolDigitizerPage: Component = () => {
   );
 }
 
-export default SnippingToolDigitizerPage;
+export default ScreenshotDigitizerPage;

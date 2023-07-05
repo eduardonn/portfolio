@@ -1,5 +1,5 @@
 import { For, createSignal, onCleanup, onMount } from "solid-js";
-import projectsList from "../../globals/projectsList";
+import projectList from "../../common/projectList";
 import { A } from "@solidjs/router";
 
 const ProjectsListBar = ({ projectIndex }: { projectIndex: number }) => {
@@ -67,7 +67,7 @@ const ProjectsListBar = ({ projectIndex }: { projectIndex: number }) => {
         style={`transform: translateX(${scroll()}px);`}
         class='flex relative gap-6 justify-center w-full min-w-max'
       >
-        <For each={projectsList}>{(item, index) => (
+        <For each={projectList}>{(item, index) => (
           <A
             ref={el => { if (index() === projectIndex) selectedLinkElement = el }}
             href={item.route} class='relative p-1 group'>

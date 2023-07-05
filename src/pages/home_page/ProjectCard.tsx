@@ -1,21 +1,21 @@
 import { Component, For, createSignal } from "solid-js"
 import TechIcon from "./TechIcons"
-import { ProjectInfo } from "../../globals/projectsList";
+import { ProjectInfo } from "../../common/projectList";
 import { A } from "@solidjs/router";
 
 interface ProjectCardProps extends Omit<ProjectInfo, 'repoLink'> {
   previewPos: 'left' | 'right'
 }
 
-const ProjectPreview = ({ route, mediaFileName, previewPos } :
-  Pick<ProjectCardProps, 'route' | 'mediaFileName' | 'previewPos'>
+const ProjectPreview = ({ route, imgFileName, videoFileName, previewPos } :
+  Pick<ProjectCardProps, 'route' | 'imgFileName' | 'videoFileName' | 'previewPos'>
 ) => {
   const [isHovering, setIsHovering] = createSignal(false);
   
   return (
     <A 
       href={route}
-      class={`absolute aspect-video h-[var(--preview-height)] z-50
+      class={`absolute aspect-video h-[var(--preview-height)] z-10
         shadow-2xl bg-gray-200 hover:scale-[1.4] transition-transform duration-500
         bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
         md:top-1/2 md:translate-y-[-50%]
@@ -25,10 +25,10 @@ const ProjectPreview = ({ route, mediaFileName, previewPos } :
         }
       `}>
       <img 
-        src={'/src/assets/project_previews/' + mediaFileName + 
+        src={'/src/assets/project_previews/' + 
           (isHovering()
-            ?  '.gif'
-            :  '.jpg')}
+            ?  videoFileName
+            :  imgFileName)}
         class='w-full h-full'
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
@@ -85,7 +85,7 @@ const DescriptionSection:
 }
 
 const ProjectCard: Component<ProjectCardProps> = (
-  { title, description, route, mediaFileName, previewPos = 'left', techStack }
+  { title, description, route, imgFileName, videoFileName, previewPos = 'left', techStack }
 ) => {
   return (
     <div
@@ -93,16 +93,17 @@ const ProjectCard: Component<ProjectCardProps> = (
         --preview-height:min(12rem,42vw);
         --preview-width:calc(var(--preview-height)*16/9)'
       class={`flex flex-col relative shadow-xl
-        min-h-[16rem] md:h-64 ml-0 mb-[calc(var(--preview-height)/2)]
+        min-h-[16rem] max-w-3xl md:h-64 ml-0 mb-[calc(var(--preview-height)/2)]
         md:mb-0
         ${(previewPos === 'left')
-            ? 'md:ml-[calc(var(--preview-width)/2)] md:mr-16'
-            : 'md:mr-[calc(var(--preview-width)/2)] md:ml-16'
+            ? 'md:ml-[calc(var(--preview-width)/2)] md:mr-8'
+            : 'md:mr-[calc(var(--preview-width)/2)] md:ml-8'
       }
     `}>
       <ProjectPreview 
         route={route}
-        mediaFileName={mediaFileName}
+        imgFileName={imgFileName}
+        videoFileName={videoFileName}
         previewPos={previewPos}
       />
       <TitleSection 

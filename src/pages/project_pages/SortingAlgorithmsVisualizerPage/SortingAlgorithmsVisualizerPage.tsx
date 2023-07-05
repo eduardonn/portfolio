@@ -1,7 +1,7 @@
 import type { Component } from 'solid-js';
 import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
 import useProjectIndex from '../useProjectIndex';
-import projectsList from '../../../globals/projectsList';
+import projectList from '../../../common/projectList';
 import Media from '../Media';
 
 const AlgorithmVisualizerPage: Component = () => {
@@ -9,8 +9,8 @@ const AlgorithmVisualizerPage: Component = () => {
 
   return (
     <ProjectPageBase projectIndex={projectIndex}>
-      <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
-      <RepoButton href={projectsList[projectIndex].repoLink} />
+      <ProjectMainTitle>{projectList[projectIndex].title}</ProjectMainTitle>
+      <RepoButton href={projectList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
           I built this project to not only learn about Three.js and React, but also Sorting Algorithms. For now, four of them are implemented: Insertion, Selection, Quick and Merge, but the project was made to quickly accommodate new algorithms and their animations.
@@ -19,7 +19,7 @@ const AlgorithmVisualizerPage: Component = () => {
           This visualizer displays a 3D animation of the selected sorting algorithm in a fun and visual way. It also allows tweaking of the array settings and animation speed.
         </p>
         <Media src={'/src/assets/project_previews/'
-          + projectsList[projectIndex].mediaFileName + '.gif'} />
+          + projectList[projectIndex].videoFileName} />
       </ProjectContentSection>
       <ProjectContentSection title='Inserting a New Sorting Algorithm'>
         <p>

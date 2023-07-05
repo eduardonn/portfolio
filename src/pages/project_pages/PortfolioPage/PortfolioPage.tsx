@@ -1,6 +1,6 @@
 import type { Component } from 'solid-js';
 import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
-import projectsList from '../../../globals/projectsList';
+import projectList from '../../../common/projectList';
 import useProjectIndex from '../useProjectIndex';
 
 const PortfolioPage: Component = () => {
@@ -8,8 +8,8 @@ const PortfolioPage: Component = () => {
 
   return (
     <ProjectPageBase projectIndex={projectIndex}>
-      <ProjectMainTitle>{projectsList[projectIndex].title}</ProjectMainTitle>
-      <RepoButton href={projectsList[projectIndex].repoLink} />
+      <ProjectMainTitle>{projectList[projectIndex].title}</ProjectMainTitle>
+      <RepoButton href={projectList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
           Despite this portfolio being relatively simple, I learned a great deal of web development making it and I think there are some things worth mentioning.
@@ -17,7 +17,7 @@ const PortfolioPage: Component = () => {
       </ProjectContentSection>
       <ProjectContentSection title='Wobbly Div'>
         <p>
-          A div with a background that resembles a liquid and reacts to mouse movement.
+          A div that reacts to mouse movement, resembling a liquid.
         </p>
         <p>
           Physics simulations are among the most interesting pieces of software in my opinion. So, using a bit of knowledge that I got from my attempts of making a car in Unity3D, I decided to implement a simple container element that wobbles when the mouse pointer passes through it.
@@ -25,7 +25,7 @@ const PortfolioPage: Component = () => {
       </ProjectContentSection>
       <ProjectContentSection title='Design'>
         <p>
-          I'm clearly not a designer, but since this is a personal website, I tried my best to show what I have. And for the theme choice, I went with summer vibes because it brings me an inspiring feeling.
+          I'm clearly not a designer, but since this is a personal website, I tried my best to do something myself. And for the theme choice, I went with summer vibes because it brings me an inspiring feeling.
         </p>
       </ProjectContentSection>
       <ProjectContentSection title='Future Improvements'>
