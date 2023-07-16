@@ -1,7 +1,8 @@
-import { Component, For, createSignal } from "solid-js"
+import { Component, For, createSignal, onMount } from "solid-js"
 import TechIcon from "./TechIcons"
 import { ProjectInfo } from "../../common/projectList";
 import { A } from "@solidjs/router";
+import { useAnimateWhenVisible } from "../../common/useAnimateWhenVisible";
 
 interface ProjectCardProps extends Omit<ProjectInfo, 'repoLink'> {
   previewPos: 'left' | 'right'
@@ -15,21 +16,22 @@ const ProjectPreview = ({ route, imgFileName, videoFileName, previewPos } :
   return (
     <A 
       href={route}
+      style='transition: transform 500ms;'
       class={`absolute aspect-video h-[var(--preview-height)] z-10
-        shadow-2xl bg-gray-200 hover:scale-[1.4] transition-transform duration-500
+        hover:scale-[1.4]
         bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
-        md:top-1/2 md:translate-y-[-50%]
+        md:top-1/2 md:-translate-y-1/2
         ${(previewPos === 'left')
-          ? 'md:left-0 md:translate-x-[-50%]'
-          : 'md:left-auto md:translate-x-[50%] md:right-0'
+          ? 'md:left-0 md:-translate-x-1/2'
+          : 'md:left-auto md:translate-x-1/2 md:right-0'
         }
       `}>
-      <img 
+      <img
         src={'/src/assets/project_previews/' + 
           (isHovering()
             ?  videoFileName
             :  imgFileName)}
-        class='w-full h-full'
+        class='w-full h-full animate-bouncy-grow'
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       />
@@ -42,8 +44,8 @@ const Spacer: Component<Pick<ProjectCardProps, 'previewPos'>> = ({ previewPos })
     <div
       class={`h-full md:min-w-[calc(var(--preview-width)/2)]${
         (previewPos === 'right')
-        ? ' float-right'
-        : ' float-left'}`}
+          ? ' float-right'
+          : ' float-left'}`}
     />
   );
 }
@@ -52,10 +54,17 @@ const TitleSection: Component<Pick<ProjectCardProps, 'previewPos' | 'route' | 't
   { previewPos, route, title }
 ) => {
   return (
-    <div class='h-20 bg-[var(--project-card-title-bg)]'>
+    <div
+      class='h-20 bg-[var(--project-card-title-bg)]'
+    >
       <Spacer previewPos={previewPos} />
       <div class='flex justify-center items-center h-full'>
-        <A href={route} class={`text-lg font-semibold text-white`}>
+        <A 
+          href={route}
+          class={`
+            text-lg font-semibold text-white
+            animate-fade-in transition-opacity duration-1000 delay-200`}
+        >
           {title}
         </A>
       </div>
@@ -68,9 +77,14 @@ const DescriptionSection:
   { previewPos, description, route, techStack }
 ) => {
   return (
-    <div class={`h-full bg-[var(--project-card-description-bg)]`}>
+    <div
+      class='h-full bg-[var(--project-card-description-bg)]'
+    >
       <Spacer previewPos={previewPos} />
-      <div class='mb-[calc(var(--preview-height)/2)] md:mb-0 h-full'>
+      <div class='
+        mb-[calc(var(--preview-height)/2)] md:mb-0 h-full
+        animate-fade-in transition-opacity duration-1000 delay-200'
+      >
         <div class='p-4 flex flex-col gap-3 h-full grow'>
           <p>{description}</p>
           <A href={route} class='text-gray-600 w-fit'>See project &gt&gt</A>
@@ -87,19 +101,24 @@ const DescriptionSection:
 const ProjectCard: Component<ProjectCardProps> = (
   { title, description, route, imgFileName, videoFileName, previewPos = 'left', techStack }
 ) => {
+  let projectPreviewEl: HTMLDivElement;
+  
+  onMount(() => useAnimateWhenVisible(projectPreviewEl));
+
   return (
     <div
+      ref={projectPreviewEl!}
       style='
         --preview-height:min(12rem,42vw);
         --preview-width:calc(var(--preview-height)*16/9)'
-      class={`flex flex-col relative shadow-xl
-        min-h-[16rem] max-w-3xl md:h-64 ml-0 mb-[calc(var(--preview-height)/2)]
-        md:mb-0
+      class={`flex flex-col relative shadow-lg
+        min-h-[16rem] max-w-3xl md:h-64 ml-0 mb-[calc(var(--preview-height)/2)] md:mb-0
         ${(previewPos === 'left')
-            ? 'md:ml-[calc(var(--preview-width)/2)] md:mr-8'
-            : 'md:mr-[calc(var(--preview-width)/2)] md:ml-8'
-      }
-    `}>
+          ? 'md:ml-[calc(var(--preview-width)/2)] md:mr-8'
+          : 'md:mr-[calc(var(--preview-width)/2)] md:ml-8'
+        }
+      `}
+    >
       <ProjectPreview 
         route={route}
         imgFileName={imgFileName}

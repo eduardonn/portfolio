@@ -32,6 +32,7 @@
   body {
     background-image: linear-gradient(
       0deg, var(--home-page-bg-gradient-1), var(--home-page-bg-gradient-2));
+    overflow-x: hidden;
   }
 
   ::selection {
@@ -95,5 +96,44 @@
   .animate-fall-bounce {
     --animation-delay: 0s;
     animation: fall-bounce 1s linear var(--animation-delay) backwards;
+  }
+
+  *[data-animation='hidden'] .animate-slide-from-left {
+    translate: -50vw 0;
+  }
+
+  *[data-animation='hidden'] .animate-slide-from-right {
+    translate: 50vw 0;
+  }
+
+  *[data-animation='hidden'] .animate-bouncy-grow {
+    scale: 0;
+    transition: scale 500ms;
+    animation: none;
+  }
+
+  *[data-animation='visible'] .animate-bouncy-grow {
+    animation: bouncy-grow 1s linear;
+  }
+
+  @keyframes bouncy-grow {
+    0% { scale: 0.00; }
+    12% { scale: 0.11; }
+    24% { scale: 0.44; }
+    36% { scale: 0.98; }
+    54% { scale: 0.75; }
+    74% { scale: 0.98; }
+    82% { scale: 0.94; }
+    92% { scale: 0.99; }
+    96% { scale: 0.98; }
+    100% { scale: 1.00; }
+  }
+
+  *[data-animation='hidden'] .animate-fade-in {
+    opacity: 0;
+  }
+
+  *[data-animation='visible'] .animate-fade-in {
+    opacity: 1;
   }
 }
