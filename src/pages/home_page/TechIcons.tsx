@@ -1,19 +1,11 @@
-import solidjsIcon from '../../assets/solidjs.svg';
-import materialUIIcon from '../../assets/materialui.svg';
-import reactIcon from '../../assets/react.svg';
-import postgresqlIcon from '../../assets/postgresql.svg';
-import typescriptIcon from '/src/assets/typescript.svg'
-import tailwindIcon from '/src/assets/tailwind.svg'
-import nextIcon from '/src/assets/next.svg'
-
 const iconsInfo = {
   'MaterialUI': {
     href: 'https://mui.com/',
-    imgSrc: materialUIIcon,
+    imgSrc: '/src/assets/materialui.svg',
   },
   'Solid.js': {
     href: 'https://www.solidjs.com/',
-    imgSrc: solidjsIcon,
+    imgSrc: '/src/assets/solidjs.svg',
   },
   'Flutter': {
     href: 'https://flutter.dev/',
@@ -21,11 +13,11 @@ const iconsInfo = {
   },
   'React.js': {
     href: 'https://react.dev/',
-    imgSrc: reactIcon,
+    imgSrc: '/src/assets/react.svg',
   },
   'Next.js': {
     href: 'https://nextjs.org/',
-    imgSrc: nextIcon,
+    imgSrc: '/src/assets/next.svg',
   },
   'Three.js': {
     href: 'https://threejs.org/',
@@ -41,7 +33,7 @@ const iconsInfo = {
   },
   'PostgreSQL': {
     href: 'https://www.postgresql.org/',
-    imgSrc: postgresqlIcon,
+    imgSrc: '/src/assets/postgresql.svg',
   },
   'Tkinter': {
     href: 'https://docs.python.org/3/library/tkinter.html',
@@ -49,15 +41,15 @@ const iconsInfo = {
   },
   'Python': {
     href: 'https://www.python.org/',
-    imgSrc: '/src/assets/python.png',
+    imgSrc: '/src/assets/python.svg',
   },
   'Typescript': {
     href: 'https://www.typescriptlang.org/',
-    imgSrc: typescriptIcon,
+    imgSrc: '/src/assets/typescript.svg',
   },
   'Tailwind': {
     href: 'https://tailwindcss.com/',
-    imgSrc: tailwindIcon,
+    imgSrc: '/src/assets/tailwind.svg',
   },
   'Tesseract-OCR': {
     href: 'https://github.com/tesseract-ocr/tesseract',

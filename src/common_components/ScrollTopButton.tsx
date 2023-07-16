@@ -14,7 +14,7 @@ export const ScrollTopButton = () => {
   return (
     <button
       style={visible() ? 'opacity: 1' : 'opacity: 0; pointer-events: none'}
-      class='fixed bottom-8 right-8 w-14 h-14
+      class='fixed bottom-8 right-8 w-14 h-14 z-40
         font-[verdana] text-xl
         bg-gray-100 rounded-full shadow-md
         transition-opacity duration-500'

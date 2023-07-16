@@ -5,7 +5,7 @@ const BackgroundElement: Component = () => {
     <img
       src='/src/assets/palm-tree.svg'
       class='
-        fixed top-0 left-1/2 -translate-x-1/2 w-[200vw]
+        fixed top-[-10vh] left-1/2 -translate-x-1/2 min-w-[200vh]
         pointer-events-none -z-50 opacity-20
       '
     />

@@ -4,7 +4,7 @@ import NextPreviousPageBar from "./NextPreviousPageBar";
 import projectList from "../../common/projectList";
 import BackgroundElement from "../../common_components/BackgroundElement";
 import Footer from "../../common_components/Footer";
-import WobblyDiv from "../../common_components/WobblyDiv";
+import WobblyDiv from "../../common_components/WobblyDiv/WobblyDiv";
 
 interface RepoButtonProps {
   href: string
@@ -74,7 +74,7 @@ const ProjectPageBase: Component<ProjectPageBaseProps> = ({ projectIndex, childr
           }}
         />
       </WobblyDiv>
-      <div class='pb-10 px-[5vw] sm:px-[15vw]'>
+      <div class='pb-10 mx-[2vw] lg:mx-[20vw]'>
         {children}
       </div>
       <Footer />

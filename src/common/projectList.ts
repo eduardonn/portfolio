@@ -30,7 +30,7 @@ const projectList: Array<ProjectInfo> = [
     techStack: ["React.js", "Typescript", "Three.js"],
   },
   {
-    title: 'Snipping Tool Digitizer',
+    title: 'Screenshot Digitizer',
     description: "An image-to-text tool to convert a part of the screen on the fly so you can paste it anywhere in text format",
     route: '/projects/screenshot-digitizer',
     repoLink: '/',

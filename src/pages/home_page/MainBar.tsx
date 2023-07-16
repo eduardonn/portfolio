@@ -4,7 +4,7 @@ import linkedinIcon from '../../assets/linkedin.svg';
 import emailIcon from '../../assets/email.svg';
 import FallingText from '../../common_components/FallingText';
 import { replayAnimations } from '../../common/animatedElementsStore';
-import WobblyDiv from '../../common_components/WobblyDiv';
+import WobblyDiv from '../../common_components/WobblyDiv/WobblyDiv';
 
 const ContactIcons: Component = () => {
   return (

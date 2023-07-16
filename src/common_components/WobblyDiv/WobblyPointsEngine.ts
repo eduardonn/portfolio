@@ -1,5 +1,3 @@
-import { Component, JSX, onCleanup, onMount } from "solid-js";
-
 interface PhysicsSettings {
   springForce: number;
   viscosity: number;
@@ -22,7 +20,7 @@ class WobblyPointsEngine {
   #numPoints: number;
   #animationFrameID?: number;
   svgElement?: SVGPathElement;
-  contentElement?: HTMLElement;
+  contentElementRect?: DOMRect;
 
   constructor(numPoints: number, settings?: PhysicsSettings) {
     this.radius = 2;
@@ -55,8 +53,7 @@ class WobblyPointsEngine {
   }
 
   #applySpringForce(point: Point) {
-    const elementBoundingBox = this.contentElement!.getBoundingClientRect();
-    const targetHeight = elementBoundingBox.height;
+    const targetHeight = this.contentElementRect!.height;
     const pointDistanceFromTarget = 
       Math.abs(point.y - targetHeight);
 
@@ -121,78 +118,4 @@ class WobblyPointsEngine {
   }
 }
 
-interface WobblyDivProps {
-  resolution?: number;
-  svgFill: string;
-  wavesForceMax?: number;
-  svgBackground?: JSX.Element;
-  children?: JSX.Element;
-}
-
-const WobblyDiv: Component<WobblyDivProps> = 
-    ({resolution = 10, wavesForceMax = 10, svgFill, svgBackground, children}) => {
-  let contentElement: HTMLDivElement;
-  
-  const pointsEngine = new WobblyPointsEngine(resolution);
-
-  const calculateWaveForce = (mouseY: number, previousMouseY: number) => {
-    let force = mouseY - previousMouseY;
-    force = Math.min(force, wavesForceMax);
-    force = Math.max(force, -wavesForceMax);
-
-    return force;
-  }
-  
-  let previousMouseY = 0;
-  const handleMouseMovement = (e: MouseEvent) => {
-    const waveLineY = contentElement.getBoundingClientRect().bottom;
-
-    if (e.clientY > waveLineY) {
-      if (previousMouseY <= waveLineY) {
-        pointsEngine.addForceWave(
-          e.clientX / window.innerWidth,
-          calculateWaveForce(e.clientY, previousMouseY));
-      }
-    } else {
-      if (previousMouseY >= waveLineY) {
-        pointsEngine.addForceWave(
-          e.clientX / window.innerWidth,
-          calculateWaveForce(e.clientY, previousMouseY));
-      }
-    }
-
-    previousMouseY = e.clientY;
-  }
-
-  onMount(() => {
-    document.addEventListener('mousemove', handleMouseMovement);
-    window.addEventListener('resize', pointsEngine.handleWindowResize.bind(pointsEngine));
-
-    onCleanup(() => {
-      pointsEngine.stopAnimation(); 
-      document.removeEventListener('mousemove', handleMouseMovement);
-      window.removeEventListener('resize', pointsEngine.handleWindowResize.bind(pointsEngine));
-    });
-  });
-
-  return (
-    <div 
-      class='relative' 
-      ref={(el) => {
-        contentElement = el;
-        pointsEngine.contentElement = el;
-        pointsEngine.startAnimation();
-      }}
-      onClick={(e) => 
-        pointsEngine.addForceWave(e.clientX / window.innerWidth, wavesForceMax)}
-    >
-      <svg class='absolute inset-0 overflow-visible -z-10'>
-        {svgBackground}
-        <path ref={pointsEngine.svgElement} fill={svgFill} />
-      </svg>
-      {children}
-    </div>
-  );
-}
-
-export default WobblyDiv;
+export default WobblyPointsEngine;

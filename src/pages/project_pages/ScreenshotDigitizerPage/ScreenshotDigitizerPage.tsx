@@ -16,7 +16,7 @@ const ScreenshotDigitizerPage: Component = () => {
           Have you ever wanted to copy some text, but the source was an image?
         </p>
         <p>
-          The Snipping Tool Digitizer allow users to take a screenshot of one portion of the screen and immediately get the text in the clipboard ready to be pasted anywhere.
+          The {projectList[projectIndex].title} allow users to take a screenshot of one portion of the screen and immediately get the text in the clipboard ready to be pasted anywhere.
         </p>
         <Media src={'/src/assets/project_previews/'
           + projectList[projectIndex].videoFileName} />
