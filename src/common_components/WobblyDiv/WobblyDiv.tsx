@@ -44,7 +44,7 @@ const WobblyDiv: Component<WobblyDivProps> =
   let previousMouseY = 0;
   let previousMouseYTime = performance.now();
   const handleMouseMovement = (e: MouseEvent) => {
-    const waveLineY = elementBoundingClientRect.bottom;
+    const waveLineY = wrapperElement.getBoundingClientRect().bottom;
 
     if (e.clientY > waveLineY) {
       if (previousMouseY <= waveLineY) {
