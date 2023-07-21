@@ -9,14 +9,15 @@ interface WobblyDivProps {
   children?: JSX.Element;
 }
 
+// TODO: Improve performance
 const WobblyDiv: Component<WobblyDivProps> = 
     ({resolution = 10, wavesForceMax = 10, svgFill, svgBackground, children}) => {
-  let contentElement: HTMLDivElement;
+  let wrapperElement: HTMLDivElement;
   let elementBoundingClientRect: DOMRect;
   const pointsEngine = new WobblyPointsEngine(resolution);
 
   onMount(() => {
-    elementBoundingClientRect = contentElement.getBoundingClientRect();
+    elementBoundingClientRect = wrapperElement.getBoundingClientRect();
 
     pointsEngine.contentElementRect = elementBoundingClientRect;
     pointsEngine.startAnimation();
@@ -31,8 +32,9 @@ const WobblyDiv: Component<WobblyDivProps> =
     });
   });
 
-  const calculateWaveForce = (mouseY: number, previousMouseY: number) => {
-    let force = mouseY - previousMouseY;
+  const calculateWaveForce = (deltaY: number, deltaTime: number) => {
+    const mouseSpeed = deltaY / deltaTime;
+    let force = mouseSpeed * 5;
     force = Math.min(force, wavesForceMax);
     force = Math.max(force, -wavesForceMax);
 
@@ -40,38 +42,42 @@ const WobblyDiv: Component<WobblyDivProps> =
   }
   
   let previousMouseY = 0;
+  let previousMouseYTime = performance.now();
   const handleMouseMovement = (e: MouseEvent) => {
     const waveLineY = elementBoundingClientRect.bottom;
 
     if (e.clientY > waveLineY) {
       if (previousMouseY <= waveLineY) {
+        const mouseXNormalized = e.clientX / window.innerWidth;
         pointsEngine.addForceWave(
-          e.clientX / window.innerWidth,
-          calculateWaveForce(e.clientY, previousMouseY));
+          mouseXNormalized,
+          calculateWaveForce(e.clientY - previousMouseY, performance.now() - previousMouseYTime));
       }
     } else {
       if (previousMouseY >= waveLineY) {
+        const mouseXNormalized = e.clientX / window.innerWidth;
         pointsEngine.addForceWave(
-          e.clientX / window.innerWidth,
-          calculateWaveForce(e.clientY, previousMouseY));
+          mouseXNormalized,
+          calculateWaveForce(e.clientY - previousMouseY, performance.now() - previousMouseYTime));
       }
     }
 
     previousMouseY = e.clientY;
+    previousMouseYTime = performance.now();
   }
 
   return (
     <div 
       class='relative' 
-      ref={contentElement!}
+      ref={wrapperElement!}
       onClick={(e) => {
-        const mouseX = e.clientX / window.innerWidth;
-        pointsEngine.addForceWave(mouseX, wavesForceMax)
+        const mouseXNormalized = e.clientX / window.innerWidth;
+        pointsEngine.addForceWave(mouseXNormalized, wavesForceMax)
       }}
     >
       <svg class='absolute inset-0 overflow-visible -z-10'>
         {svgBackground}
-        <path ref={pointsEngine.svgElement} fill={svgFill} />
+        <path ref={pointsEngine.svgPathElement} fill={svgFill} />
       </svg>
       {children}
     </div>

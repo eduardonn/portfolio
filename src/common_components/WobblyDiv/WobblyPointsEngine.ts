@@ -19,7 +19,7 @@ class WobblyPointsEngine {
   radius: number;
   #numPoints: number;
   #animationFrameID?: number;
-  svgElement?: SVGPathElement;
+  svgPathElement?: SVGPathElement;
   contentElementRect?: DOMRect;
 
   constructor(numPoints: number, settings?: PhysicsSettings) {
@@ -84,7 +84,7 @@ class WobblyPointsEngine {
       newDAttribute += ` ${Math.round(this.#points[i].x)} ${Math.round(this.#points[i].y)}`;
     }
     newDAttribute += ` ${window.innerWidth} 0`;
-    this.svgElement!.setAttribute('d', newDAttribute);
+    this.svgPathElement!.setAttribute('d', newDAttribute);
   }
 
   update() {
