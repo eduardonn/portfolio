@@ -13,7 +13,7 @@ interface RepoButtonProps {
 export const RepoButton: Component<RepoButtonProps> = ({ href }) => {
   return (
     <button
-      class='w-fit px-4 font-monospace text-sm rounded
+      class='w-fit px-4 ml-auto font-monospace text-sm rounded
         bg-[linear-gradient(var(--main-bar-bg-gradient-clr-1),var(--main-bar-bg-gradient-clr-2))]'
     >
       <a href={href} target='_blank'>Repo</a>
@@ -23,7 +23,9 @@ export const RepoButton: Component<RepoButtonProps> = ({ href }) => {
 
 export const ProjectMainTitle: Component<{ children: JSX.Element }> = ({ children }) => {
   return (
-    <h1 class='text-4xl text-center my-8'>{children}</h1>
+    <h1 class='text-3xl md:text-4xl text-center my-2 tracking-tighter'>
+      {children}
+    </h1>
   )
 }
 
@@ -34,9 +36,9 @@ interface ContentSectionProps {
 
 export const ProjectContentSection: Component<ContentSectionProps> = ({ title, children }) => {
   return (
-    <section class='mb-8'>
-      <h2 class='text-2xl mb-4'>{title}</h2>
-      <div class='flex flex-col gap-2'>
+    <section class='mb-6'>
+      <h2 class='text-2xl mb-2'>{title}</h2>
+      <div class='flex flex-col gap-1'>
         {children}
       </div>
     </section>
@@ -75,6 +77,8 @@ const ProjectPageBase: Component<ProjectPageBaseProps> = ({ projectIndex, childr
         />
       </WobblyDiv>
       <div class='pb-10 mx-[2vw] lg:mx-[20vw]'>
+        <ProjectMainTitle>{projectList[projectIndex].title}</ProjectMainTitle>
+        <RepoButton href={projectList[projectIndex].repoLink} />
         {children}
       </div>
       <Footer />

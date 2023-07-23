@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
+import ProjectPageBase, { ProjectContentSection } from '../ProjectPageBase';
 import projectList from '../../../common/projectList';
 import useProjectIndex from '../useProjectIndex';
 import Media from '../Media';
@@ -9,11 +9,12 @@ const CamSurSystemPage: Component = () => {
 
   return (
     <ProjectPageBase projectIndex={projectIndex}>
-      <ProjectMainTitle>{projectList[projectIndex].title}</ProjectMainTitle>
-      <RepoButton href={projectList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
-          This is a camera surveillance system that uses AI for detecting people on the screen and alerting the user. This project was presented as my college's final project. The objective is to increase home security using only software and a spare computer for gathering the images and processing the AI model.
+          This is a camera surveillance system that uses AI for detecting people on the screen and alerting the user. This project was presented as my college final year project.
+        </p>
+        <p>
+          The objective is to increase home security using only software and a spare computer for gathering the images and processing the AI model.
         </p>
         <Media src={'/src/assets/project_previews/'
           + projectList[projectIndex].videoFileName} />
@@ -38,7 +39,7 @@ const CamSurSystemPage: Component = () => {
           The Android application's purpose is to provide a quick and mobile way to check the cameras and receive the notifications from the detections.
         </p>
         <p>
-          To make this app I decided to use Flutter, which was way quicker to learn than PyQt5, and its programming language: Dart, which is really similar to C# and was pretty easy to learn too.
+          To make this app, I decided to use Flutter, which was way quicker to learn than PyQt5, and its programming language (Dart) was pretty easy to learn too.
         </p>
         <Media src="/src/assets/camera_surveillance_system/Interfaces_Android.jpg" />
       </ProjectContentSection>
@@ -51,7 +52,7 @@ const CamSurSystemPage: Component = () => {
             Allow for more cameras to be connected
           </li>
           <li>
-            Better the communication with the mobile app
+            Improve the communication with the mobile app
           </li>
         </ul>
       </ProjectContentSection>

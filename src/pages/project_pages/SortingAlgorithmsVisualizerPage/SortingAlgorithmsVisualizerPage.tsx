@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
+import ProjectPageBase, { ProjectContentSection } from '../ProjectPageBase';
 import useProjectIndex from '../useProjectIndex';
 import projectList from '../../../common/projectList';
 import Media from '../Media';
@@ -9,8 +9,6 @@ const AlgorithmVisualizerPage: Component = () => {
 
   return (
     <ProjectPageBase projectIndex={projectIndex}>
-      <ProjectMainTitle>{projectList[projectIndex].title}</ProjectMainTitle>
-      <RepoButton href={projectList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
           I built this project to not only learn about Three.js and React, but also Sorting Algorithms. For now, four of them are implemented: Insertion, Selection, Quick and Merge, but the project was made to quickly accommodate new algorithms and their animations.
@@ -26,12 +24,20 @@ const AlgorithmVisualizerPage: Component = () => {
           Inserting a new algorithm is a three step process:
         </p>
         <ol>
-          <li>Implement method with the same name</li>
+          <li>Implement method with the same name (e.g. quick)</li>
           <li>Insert the name of the algorithm and the respective method in the algorithms list</li>
           <li>Create callbacks for the animations</li>
         </ol>
         <p>
-          The button is added automatically in the UI
+          The button and callback is extracted from the algorithms list object and added automatically in the UI.
+        </p>
+      </ProjectContentSection>
+      <ProjectContentSection title='Technologies Used'>
+        <p>
+          React / react-three-fiber (a wrapper around Three.js) was chosen for the graphics, mainly for its simplicity in relation to directly using WebGL.
+        </p>
+        <p>
+          It was a new experience to create 3D graphics in a declarative way and maybe it wasn't the best choice mainly because 3D applications are mostly imperative, nevertheless, the project helped me learn a great deal of React.
         </p>
       </ProjectContentSection>
       <ProjectContentSection title='Future Improvements'>

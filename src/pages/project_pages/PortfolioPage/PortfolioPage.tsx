@@ -1,6 +1,5 @@
 import type { Component } from 'solid-js';
-import ProjectPageBase, { ProjectContentSection, ProjectMainTitle, RepoButton } from '../ProjectPageBase';
-import projectList from '../../../common/projectList';
+import ProjectPageBase, { ProjectContentSection } from '../ProjectPageBase';
 import useProjectIndex from '../useProjectIndex';
 
 const PortfolioPage: Component = () => {
@@ -8,8 +7,6 @@ const PortfolioPage: Component = () => {
 
   return (
     <ProjectPageBase projectIndex={projectIndex}>
-      <ProjectMainTitle>{projectList[projectIndex].title}</ProjectMainTitle>
-      <RepoButton href={projectList[projectIndex].repoLink} />
       <ProjectContentSection>
         <p>
           Despite this portfolio being relatively simple, I learned a great deal of web development making it and I think there are some things worth mentioning.
@@ -25,7 +22,7 @@ const PortfolioPage: Component = () => {
       </ProjectContentSection>
       <ProjectContentSection title='Design'>
         <p>
-          I'm clearly not a designer, but since this is a personal website, I tried my best to do something myself. And for the theme choice, I went with summer vibes because it brings me an inspiring feeling.
+          I'm clearly not a designer, but since this is a personal website, I tried my best to do something myself. And for the theme choice, I went with summer vibes because it brings me a relaxing and inspiring feeling.
         </p>
       </ProjectContentSection>
       <ProjectContentSection title='Future Improvements'>
@@ -34,7 +31,7 @@ const PortfolioPage: Component = () => {
             Make the lines in the Wobbly Div smoother, i.e. instead of using lines on the svg, it should be possible to use curves to make it completely smooth
           </li>
           <li>
-            Make a cooler design and animations
+            Make a cooler design and better animations
           </li>
         </ul>
       </ProjectContentSection>
