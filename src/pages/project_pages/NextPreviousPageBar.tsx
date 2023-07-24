@@ -39,7 +39,7 @@ const NextPreviousPageBar: Component<NextPreviousPageBarProps> = ({ previous, ne
   return (
     <div class='flex justify-between items-center'>
       <LinkButton info={previous} side='left'>Previous Project</LinkButton>
-      <LinkButton info={{ route: '/', title: 'Home' }}>Home</LinkButton>
+      <LinkButton info={{ route: '/portfolio', title: 'Home' }}>Home</LinkButton>
       <LinkButton info={next} side='right'>Next Project</LinkButton>
     </div>
   )
