@@ -16,7 +16,7 @@ const AlgorithmVisualizerPage: Component = () => {
         <p>
           This visualizer displays a 3D animation of the selected sorting algorithm in a fun and visual way. It also allows tweaking of the array settings and animation speed.
         </p>
-        <Media src={'/src/assets/project_previews/'
+        <Media src={'/portfolio/assets/project_previews/'
           + projectList[projectIndex].videoFileName} />
       </ProjectContentSection>
       <ProjectContentSection title='Inserting a New Sorting Algorithm'>

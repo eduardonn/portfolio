@@ -27,7 +27,7 @@ const ProjectPreview = ({ route, imgFileName, videoFileName, previewPos } :
         }
       `}>
       <img
-        src={'/src/assets/project_previews/' + 
+        src={'/portfolio/assets/project_previews/' + 
           (isHovering()
             ?  videoFileName
             :  imgFileName)}

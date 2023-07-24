@@ -16,20 +16,20 @@ const RememoPage: Component = () => {
         <p>
           This application allows you to create notes and assign a level of memorization to each of them, so you can keep track of what needs reviewing, and also provides a reviewing functionality.
         </p>
-        <Media src={'/src/assets/project_previews/'
+        <Media src={'/portfolio/assets/project_previews/'
           + projectList[projectIndex].videoFileName} />
       </ProjectContentSection>
       <ProjectContentSection title='Memos Tab'>
         <p>
           The first tab shows all the notes created and the level of memorization of each of them in a practical fashion and allows the editting of any note with one click.
         </p>
-        <Media src={'/src/assets/rememo/memos_tab.png'} />
+        <Media src={'/portfolio/assets/rememo/memos_tab.png'} />
       </ProjectContentSection>
       <ProjectContentSection title='Reviewing'>
         <p>
           The reviewing functionality shows users different notes in sequence according to each note's level of memorization and allows the reassigning of a new level. Notes with a lower level of memorization (meaning that they would be more easily forgotten) are showed more frequently.
         </p>
-        <Media src={'/src/assets/rememo/review_tab.png'} />
+        <Media src={'/portfolio/assets/rememo/review_tab.png'} />
       </ProjectContentSection>
       <ProjectContentSection title='Progress and Settings Tabs'>
         <p>

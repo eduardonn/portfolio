@@ -16,7 +16,7 @@ const ScreenshotDigitizerPage: Component = () => {
         <p>
           The {projectList[projectIndex].title} allow users to take a screenshot of one portion of the screen and immediately get the text in the clipboard ready to be pasted anywhere.
         </p>
-        <Media src={'/src/assets/project_previews/'
+        <Media src={'/portfolio/assets/project_previews/'
           + projectList[projectIndex].videoFileName} />
         <p>
           This tool proved to be useful while I was making my college's final project and had to quote some text from digitized books that were on image format.

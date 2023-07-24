@@ -13,7 +13,7 @@ const App: Component = () => {
     <>
       <Router>
         <Routes>
-          <Route path='/' component={Home} />
+          <Route path='/portfolio' component={Home} />
           <Route path='/projects/rememo' component={RememoPage} />
           <Route path='/projects/3d-sorting-algorithms-visualizer' component={AlgorithmVisualizerPage} />
           <Route path='/projects/screenshot-digitizer' component={ScreenshotDigitizerPage} />
